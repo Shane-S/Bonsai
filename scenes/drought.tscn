@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=1]
+[gd_scene load_steps=4 format=1]
 
 [ext_resource path="res://scripts/weathers/drought.gd" type="Script" id=1]
+[ext_resource path="res://scenes/subshine.tscn" type="PackedScene" id=2]
+[ext_resource path="res://assets/textures/clear_sky.png" type="Texture" id=3]
 
 [node name="Drought" type="Node2D"]
 
@@ -8,4 +10,17 @@ script/script = ExtResource( 1 )
 light_level = 20.0
 dry_rate = 1.0
 
+[node name="sunshine" parent="." instance=ExtResource( 2 )]
 
+transform/pos = Vector2( 455.223, 128.189 )
+transform/scale = Vector2( 1.34513, 1.21098 )
+modulate = Color( 1, 0.320648, 0.230469, 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+
+z/z = -1
+texture = ExtResource( 3 )
+centered = false
+
+
+[editable path="sunshine"]
