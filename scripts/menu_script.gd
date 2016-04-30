@@ -14,8 +14,7 @@ func _ready():
 
 
 func _on_play_button_pressed():
-	print("clicked play button!")
-
+	pass 
 
 func _on_options_button_pressed():
 	print("clicked options button!")
