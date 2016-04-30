@@ -61,7 +61,7 @@ func _process(delta):
 	
 	# TODO: add absolute max and min, and stop game once one of these is hit
 	if(moisture >= moisture_zone.low and moisture <= moisture_zone.high and
-	   light >= light_zone.low and light <= light_zone.hight):
+	   light >= light_zone.low and light <= light_zone.high):
 		wisdom += 0.5
 	else:
 		if(moisture < moisture_zone.low):

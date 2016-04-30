@@ -4,7 +4,7 @@ extends Node2D
 # by 200 seconds, we'll have reached the minimum time between weather events
 const END_TIME = 200.0 
 
-const MIN_INTERVAL = {"high" : 1.5, "low" : 0.75}
+const END_INTERVAL = {"high" : 1.5, "low" : 0.75}
 const START_INTERVAL = {"high" : 10.0, "low" : 8.5}
 
 func _ready():
