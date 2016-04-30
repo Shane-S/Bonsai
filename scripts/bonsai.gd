@@ -18,10 +18,12 @@ var branch_colours = []
 var moisture_zone
 var light_zone
 
+onready var shade = get_node("shade")
 onready var watering_can = get_node("watering_can")
 
 func _ready():
 	watering_can.connect("watering_can_clicked", self, "_on_watering_can_pressed")
+	shade.connect("shade_changed", self, "_on_shade_changed")
 	moisture_zone = DEFAULT_MOISTURE_ZONE
 	light_zone = DEFAULT_LIGHT_ZONE
 	
@@ -87,3 +89,7 @@ func _on_watering_can_pressed():
 	print("watering can clicked received! in bansai")
 	moisture += watering_can.water_amount
 	print("moisture set to ",moisture)
+	
+func _on_shade_changed():
+	print("shade changed received! in bansai")
+	print("sun mod is ", shade.sun_mod)

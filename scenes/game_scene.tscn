@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=1]
+[gd_scene load_steps=7 format=1]
 
 [ext_resource path="res://scenes/game_scene.gd" type="Script" id=1]
 [ext_resource path="res://assets/instances/bonsai.scn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/watering_can.tscn" type="PackedScene" id=3]
-[ext_resource path="res://assets/textures/sunshine.png" type="Texture" id=4]
+[ext_resource path="res://scenes/shade.tscn" type="PackedScene" id=4]
+[ext_resource path="res://assets/textures/sunshine.png" type="Texture" id=5]
 
 [sub_resource type="Animation" id=1]
 
@@ -27,7 +28,13 @@ transform/pos = Vector2( -10.5514, -13.566 )
 
 [node name="watering_can" parent="bansai" instance=ExtResource( 3 )]
 
-transform/pos = Vector2( 220.049, -142.877 )
+transform/pos = Vector2( -181.261, -73.4979 )
+transform/scale = Vector2( -1, 1 )
+
+[node name="shade" parent="bansai" instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 142.839, -216.299 )
+transform/scale = Vector2( 1, 1 )
 
 [node name="light_timer" type="Timer" parent="."]
 
@@ -39,10 +46,8 @@ autostart = false
 [node name="sunshine" type="Sprite" parent="."]
 
 transform/pos = Vector2( 191.645, -406.769 )
-texture = ExtResource( 4 )
+texture = ExtResource( 5 )
 hframes = 7
-frame = 3
-__meta__ = { "_editor_collapsed":true }
 
 [node name="anim" type="AnimationPlayer" parent="sunshine"]
 
