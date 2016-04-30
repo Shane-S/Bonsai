@@ -3,17 +3,7 @@
 [ext_resource path="res://scripts/weathers/rain.gd" type="Script" id=1]
 [ext_resource path="res://assets/textures/dark_clouds.png" type="Texture" id=2]
 [ext_resource path="res://assets/textures/rain.png" type="Texture" id=3]
-
-[sub_resource type="Animation" id=1]
-
-resource/name = "rain"
-length = 1.0
-loop = true
-step = 0.1
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:transform/pos")
-tracks/0/interp = 0
-tracks/0/keys = { "cont":true, "times":FloatArray( 0, 0.5, 1 ), "transitions":FloatArray( 1, 1, 1 ), "values":[ Vector2( 0, 0 ), Vector2( -50, -50 ), Vector2( 0, 0 ) ] }
+[ext_resource path="res://assets/animations/rain.anm" type="Animation" id=4]
 
 [node name="Rain" type="Node2D"]
 
@@ -27,18 +17,18 @@ z/z = -2
 texture = ExtResource( 2 )
 centered = false
 
-[node name="Sprite" type="Sprite" parent="."]
+[node name="rain" type="Sprite" parent="."]
 
 z/z = -1
 texture = ExtResource( 3 )
 centered = false
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="rain"]
 
 playback/process_mode = 1
 playback/default_blend_time = 0.0
 root/root = NodePath("..")
-anims/rain = SubResource( 1 )
+anims/rain = ExtResource( 4 )
 playback/active = true
 playback/speed = 1.0
 blend_times = [  ]
