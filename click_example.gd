@@ -10,7 +10,7 @@ func _ready():
 	# Initialization here
 	pass
 
-func _input(evt):
+func _input_event(viewport, evt, shape_idx):
 	if(evt.type == InputEvent.MOUSE_BUTTON):
 		print("bar")
 		get_tree().set_input_as_handled ( )
