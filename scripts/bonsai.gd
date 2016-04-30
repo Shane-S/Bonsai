@@ -4,10 +4,12 @@ extends Node2D
 # default wisdom zones for light and moisture
 const DEFAULT_MOISTURE_ZONE = {"low" : 10.0, "high" : 30.0}
 const DEFAULT_LIGHT_ZONE = {"low" : 10.0, "high" : 30.0}
+const AGE_RATE = 10.0
 
-var moisture = 0.0
-var light = 0.0
+var moisture = 20.0
+var light = 20.0
 var wisdom = 0.0
+var age = 0.0
 var max_age = 1000.0 # algorithm for determining max age may change; currently, if the player gets a perfect run, their tree will be 1000
 
 var branch_colours = []
@@ -25,7 +27,6 @@ func _ready():
 	# create the random branch colours
 	# HACKS INBOUND
 	var colours = ["green", "orange", "blue", "yellow"]
-	var sprite_textures = []
 	for i in range(6):
 		var rnd = randi()
 		var colour = rnd % 4
@@ -46,18 +47,35 @@ func _ready():
 			light_zone["high"] -= 1.2
 	
 		# assign the appropriate branch type based on the colour selection
-		sprite_textures.push_back(load("assets//textures//branch" + str(i) + "_" + colours[colour] + ".png"))
-	
-	get_node("trunk/branch0").set_texture(sprite_textures[0])
-	get_node("trunk/branch1").set_texture(sprite_textures[1])
-	get_node("trunk/branch2").set_texture(sprite_textures[2])
-	get_node("trunk/branch3").set_texture(sprite_textures[3])
-	get_node("trunk/branch4").set_texture(sprite_textures[4])
-	get_node("trunk/branch5").set_texture(sprite_textures[5])
-	
+		get_node("trunk/branch" + str(i)).set_texture(load("assets//textures//branch" + str(i) + "_" + colours[colour] + ".png"))
 	
 	set_process(true)
 	pass
 
 func _process(delta):
+	age += delta * AGE_RATE
+	if(age >= max_age):
+		age = max_age
+		# game over
+		return
+	
+	# TODO: add absolute max and min, and stop game once one of these is hit
+	if(moisture >= moisture_zone.low and moisture <= moisture_zone.high and
+	   light >= light_zone.low and light <= light_zone.hight):
+		wisdom += 0.5
+	else:
+		if(moisture < moisture_zone.low):
+			var diff = moisture_zone.low - moisture
+			max_age -= diff
+		elif(moisture > moisture_zone.high):
+			var diff = moisture - moisture_zone.high
+			max_age -= diff
+		
+		if(light < light_zone.low):
+			var diff = light_zone.low - light
+			max_age -= diff
+		elif(light > light_zone.high):
+			var diff = light - light_zone.high
+			max_age -= diff
+		
 	
