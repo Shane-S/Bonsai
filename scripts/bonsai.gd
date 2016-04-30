@@ -18,7 +18,10 @@ var branch_colours = []
 var moisture_zone
 var light_zone
 
+onready var watering_can = get_node("watering_can")
+
 func _ready():
+	watering_can.connect("watering_can_clicked", self, "_on_watering_can_pressed")
 	moisture_zone = DEFAULT_MOISTURE_ZONE
 	light_zone = DEFAULT_LIGHT_ZONE
 	
@@ -79,3 +82,8 @@ func _process(delta):
 			max_age -= diff
 		
 	
+
+func _on_watering_can_pressed():
+	print("watering can clicked received! in bansai")
+	moisture += watering_can.water_amount
+	print("moisture set to ",moisture)

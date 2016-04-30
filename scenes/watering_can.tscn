@@ -1,0 +1,30 @@
+[gd_scene load_steps=3 format=1]
+
+[ext_resource path="res://scripts/water_can.gd" type="Script" id=1]
+[ext_resource path="res://assets/textures/watering_can.png" type="Texture" id=2]
+
+[node name="Watering Can" type="Node2D"]
+
+script/script = ExtResource( 1 )
+water_amount = 3
+
+[node name="Panel" type="Panel" parent="."]
+
+visibility/opacity = 0.0
+margin/left = -45.0
+margin/top = -42.0
+margin/right = 52.0
+margin/bottom = 44.0
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+
+[node name="Sprite" type="Sprite" parent="."]
+
+transform/scale = Vector2( 0.15, 0.15 )
+texture = ExtResource( 2 )
+
+[connection signal="input_event" from="Panel" to="." method="_on_Panel_input_event"]
+
+

@@ -9,6 +9,7 @@ const START_INTERVAL = {"high" : 10.0, "low" : 8.5}
 
 func _ready():
 	get_node("light_timer").set_wait_time(START_INTERVAL.high)
+	set_process(true)
 	pass
 
 
@@ -22,4 +23,9 @@ func _on_light_timer_timeout():
 	
 	get_node("light_timer").set_wait_time(new_wait_time)
 	
-	pass # replace with function body
+func _process(delta):
+	pass
+
+
+func _on_watering_can_watering_can_clicked():
+	print("watering can clicked! in node2d")
