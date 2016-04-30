@@ -73,7 +73,7 @@ func _process(delta):
 		wisdom += delta * WISDOM_RATE
 	else:
 		handle_moisture(delta)
-		handle_light()
+		handle_light(delta)
 	#decrease the moisture
 
 func current_light():
@@ -82,18 +82,18 @@ func current_light():
 func handle_moisture(delta):
 	if(moisture < moisture_zone.low):
 		var diff = moisture_zone.low - moisture
-		max_age -= diff
+		max_age -= diff * delta
 	elif(moisture > moisture_zone.high):
 		var diff = moisture - moisture_zone.high
-		max_age -= diff
+		max_age -= diff * delta
 
-func handle_light():
+func handle_light(delta):
 	if(current_light() < light_zone.low):
 		var diff = light_zone.low - light
-		max_age -= diff
+		max_age -= diff * delta
 	elif(current_light() > light_zone.high):
 		var diff = current_light() - light_zone.high
-		max_age -= diff
+		max_age -= diff * delta
 
 func is_light_good():
 	return (current_light() >= light_zone.low and current_light() <= light_zone.high)
