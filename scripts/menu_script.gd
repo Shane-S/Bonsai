@@ -1,20 +1,12 @@
 
-extends VBoxContainer
+extends Container
 
-# member variables here, example:
-# var a=2
-# var b="textvar"
+const GAME_SCENE = "res://scenes/game_scene.tscn"
 
 func _ready():
-	# Called every time the node is added to the scene.
-	# Initialization here
+	set_process(true)
 	pass
 
-
-
-
 func _on_play_button_pressed():
-	pass 
-
-func _on_options_button_pressed():
-	print("clicked options button!")
+	get_node("/root/global").transition(GAME_SCENE)	
+	pass

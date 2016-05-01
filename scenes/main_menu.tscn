@@ -1,53 +1,61 @@
-[gd_scene load_steps=3 format=1]
+[gd_scene load_steps=8 format=1]
 
 [ext_resource path="res://scripts/menu_script.gd" type="Script" id=1]
-[ext_resource path="res://assets/fonts/menu_font.fnt" type="Font" id=2]
+[ext_resource path="res://assets/textures/rock_button.png" type="Texture" id=2]
+[ext_resource path="res://assets/textures/rock_button_dark.png" type="Texture" id=3]
+[ext_resource path="res://scenes/sun.tscn" type="PackedScene" id=4]
+[ext_resource path="res://assets/textures/bonsai_logo_text.png" type="Texture" id=5]
+[ext_resource path="res://assets/textures/menu_bonsai.png" type="Texture" id=6]
+[ext_resource path="res://assets/textures/grass.png" type="Texture" id=7]
 
-[node name="menu_container" type="VBoxContainer"]
+[node name="menu_container" type="Container"]
 
 margin/right = 600.0
-margin/bottom = 1024.0
+margin/bottom = 1000.0
 rect/min_size = Vector2( 200, 200 )
 focus/ignore_mouse = false
 focus/stop_mouse = false
 size_flags/horizontal = 3
 size_flags/vertical = 3
-alignment = 1
 script/script = ExtResource( 1 )
 
-[node name="play_button" type="MenuButton" parent="."]
+[node name="play_button" type="TextureButton" parent="."]
 
-margin/right = 600.0
-margin/bottom = 510.0
+margin/left = 155.0
+margin/top = 825.0
+margin/right = 850.0
+margin/bottom = 1214.0
+rect/scale = Vector2( 0.4, 0.4 )
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 3
-size_flags/vertical = 3
-custom_fonts/font = ExtResource( 2 )
+size_flags/vertical = 2
 toggle_mode = false
 click_on_press = true
-text = "Play"
-flat = true
-items = [  ]
+textures/normal = ExtResource( 2 )
+textures/pressed = ExtResource( 3 )
+textures/hover = ExtResource( 3 )
 
-[node name="options_button" type="MenuButton" parent="."]
+[node name="Sun" parent="." instance=ExtResource( 4 )]
 
-margin/top = 514.0
-margin/right = 600.0
-margin/bottom = 1024.0
-focus/ignore_mouse = false
-focus/stop_mouse = true
-size_flags/horizontal = 3
-size_flags/vertical = 3
-custom_fonts/font = ExtResource( 2 )
-toggle_mode = false
-click_on_press = true
-text = "Options"
-flat = true
-items = [  ]
+[node name="text" type="Sprite" parent="."]
+
+transform/pos = Vector2( 290.855, 210.593 )
+texture = ExtResource( 5 )
+
+[node name="tree" type="Sprite" parent="."]
+
+transform/pos = Vector2( 298.45, 532.26 )
+transform/scale = Vector2( 0.959838, 1 )
+texture = ExtResource( 6 )
+
+[node name="grass" type="Sprite" parent="."]
+
+transform/pos = Vector2( 309.757, 850.095 )
+transform/scale = Vector2( 1.08795, 1.40568 )
+z/z = -1
+texture = ExtResource( 7 )
 
 [connection signal="pressed" from="play_button" to="." method="_on_play_button_pressed"]
-
-[connection signal="pressed" from="options_button" to="." method="_on_options_button_pressed"]
 
 
