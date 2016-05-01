@@ -2,10 +2,10 @@
 
 [ext_resource path="res://scenes/weather.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/bonsai.tscn" type="PackedScene" id=2]
-[ext_resource path="res://scenes/light.tscn" type="PackedScene" id=3]
-[ext_resource path="res://scenes/shade.tscn" type="PackedScene" id=4]
-[ext_resource path="res://scenes/watering_can.tscn" type="PackedScene" id=5]
-[ext_resource path="res://assets/textures/greenhouse.png" type="Texture" id=6]
+[ext_resource path="res://assets/textures/greenhouse.png" type="Texture" id=3]
+[ext_resource path="res://scenes/light.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/shade.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/watering_can.tscn" type="PackedScene" id=6]
 [ext_resource path="res://assets/textures/health_bar.png" type="Texture" id=7]
 [ext_resource path="res://scripts/health_update.gd" type="Script" id=8]
 [ext_resource path="res://assets/textures/health.png" type="Texture" id=9]
@@ -26,31 +26,31 @@ transform/pos = Vector2( -300.149, -514.358 )
 transform/pos = Vector2( -14.5342, 84.1282 )
 transform/scale = Vector2( 0.709784, 0.749732 )
 
-[node name="light" parent="bansai" instance=ExtResource( 3 )]
-
-transform/pos = Vector2( 1.64673, -187.219 )
-z/z = 4
-
-[node name="shade" parent="bansai" instance=ExtResource( 4 )]
-
-transform/pos = Vector2( 135.927, -273.693 )
-transform/scale = Vector2( 1.5, 1.57792 )
-z/z = 6
-open_sun_mod = -3
-closed_sun_mod = 0
-
-[node name="watering_can" parent="bansai" instance=ExtResource( 5 )]
-
-transform/pos = Vector2( -183.56, -143.769 )
-transform/scale = Vector2( -1, 1 )
-z/z = 4
-
 [node name="house" type="Sprite" parent="bansai"]
 
 transform/pos = Vector2( 0, -66.6907 )
 transform/scale = Vector2( 1.73429, 1.79312 )
 z/z = 5
-texture = ExtResource( 6 )
+texture = ExtResource( 3 )
+
+[node name="light" parent="bansai" instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 1.64673, -187.219 )
+z/z = 4
+
+[node name="shade" parent="bansai" instance=ExtResource( 5 )]
+
+transform/pos = Vector2( 248.274, -231.998 )
+transform/scale = Vector2( 1.5, 1.57792 )
+z/z = 6
+open_sun_mod = -3
+closed_sun_mod = 0
+
+[node name="watering_can" parent="bansai" instance=ExtResource( 6 )]
+
+transform/pos = Vector2( -180.762, -110.391 )
+transform/scale = Vector2( -1, 1 )
+z/z = 4
 
 [node name="health_bar" type="Sprite" parent="."]
 

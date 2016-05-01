@@ -26,7 +26,7 @@ centered = false
 
 [node name="Light2D" type="Light2D" parent="."]
 
-transform/pos = Vector2( 900, -1000 )
+transform/pos = Vector2( 594.854, 10.4829 )
 enabled = true
 texture = ExtResource( 4 )
 offset = Vector2( 0, 0 )
@@ -40,7 +40,7 @@ range/z_max = 1024
 range/layer_min = 0
 range/layer_max = 0
 range/item_mask = 1
-shadow/enabled = false
+shadow/enabled = true
 shadow/color = Color( 0, 0, 0, 0 )
 shadow/buffer_size = 2048
 shadow/esm_multiplier = 80.0

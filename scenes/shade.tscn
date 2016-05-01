@@ -30,7 +30,7 @@ tracks/0/keys = { "cont":true, "times":FloatArray( 0, 0.5 ), "transitions":Float
 
 closed = true
 cull_mode = 0
-polygon = Vector2Array( -44.3334, -32.0636, -24.3401, -121.763, 19.9695, -71.5099, 5.37976, 29.5375 )
+polygon = Vector2Array( -52.7245, -64.7766, -42.998, -16.1441, -30.0294, 7.63175, -0.84991, 26.004, -30.0294, 13.0354, -50.5631, -28.5724, -55.9667, -58.8326, -48.942, -102.602, -28.9487, -119.893, -46.7805, -98.8193 )
 
 [node name="Shade" type="Node2D"]
 
@@ -59,6 +59,7 @@ texture = ExtResource( 2 )
 [node name="TopSprite" type="Sprite" parent="BaseSprite"]
 
 transform/pos = Vector2( -6.52652, -22.6101 )
+transform/rot = -90.0
 texture = ExtResource( 3 )
 offset = Vector2( -8, -86 )
 
@@ -76,7 +77,7 @@ autoplay = ""
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="BaseSprite/TopSprite"]
 
-transform/pos = Vector2( 24.8988, -50.8789 )
+transform/pos = Vector2( 25.4391, -50.8789 )
 occluder = SubResource( 3 )
 light_mask = 1
 
