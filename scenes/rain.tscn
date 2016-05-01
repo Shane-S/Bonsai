@@ -11,13 +11,14 @@ dry_rate = 0.25
 
 [node name="clouds" type="Sprite" parent="."]
 
-z/z = -2
+z/z = -3
 texture = ExtResource( 2 )
 centered = false
 
 [node name="Rain" type="Particles2D" parent="."]
 
 transform/pos = Vector2( 300, 0 )
+z/z = -2
 config/amount = 750
 config/lifetime = 3.0
 config/half_extents = Vector2( 400, 0 )

@@ -1,11 +1,20 @@
-[gd_scene load_steps=2 format=1]
+[gd_scene load_steps=3 format=1]
 
 [ext_resource path="res://scripts/leaf_clump.gd" type="Script" id=1]
+[ext_resource path="res://assets/textures/icicles.png" type="Texture" id=2]
 
 [node name="LeafClump" type="Node2D"]
 
 script/script = ExtResource( 1 )
 ellipse_dims = Vector2( 80, 80 )
-num_sprites = null
+num_sprites = 10
+brown_prob = 0.5
+
+[node name="Icicles" type="Sprite" parent="."]
+
+visibility/visible = false
+transform/pos = Vector2( 0, 40 )
+transform/scale = Vector2( 0.25, 0.25 )
+texture = ExtResource( 2 )
 
 

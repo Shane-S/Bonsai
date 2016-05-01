@@ -20,11 +20,13 @@ transform/pos = Vector2( -300.149, -514.358 )
 [node name="light" parent="bansai" instance=ExtResource( 3 )]
 
 transform/pos = Vector2( -13.0069, -223.509 )
+z/z = 4
 
 [node name="shade" parent="bansai" instance=ExtResource( 4 )]
 
 transform/pos = Vector2( 123.619, -236.829 )
 transform/scale = Vector2( 0.729098, 0.782379 )
+z/z = 4
 open_sun_mod = -3
 closed_sun_mod = 0
 
@@ -32,6 +34,7 @@ closed_sun_mod = 0
 
 transform/pos = Vector2( -180.762, -110.391 )
 transform/scale = Vector2( -1, 1 )
+z/z = 4
 
 
 [editable path="Weather"]
