@@ -13,10 +13,18 @@ const HEALTH_STATE = {GOOD = 0, LOW = 1, HIGH = 2}
 var moisture = 20.0
 var light = 20.0
 
+
 var moisture_state = HEALTH_STATE.GOOD
 var light_state = HEALTH_STATE.GOOD
 
+var quotes = [
+"OMG such wise",
+"Stumps are dead trees",
+"Eat yo wheaties",
+"Paper beats rock"]
+
 var wisdom = 0.0
+var quotes_gotten = 0
 var age = 0.0
 var max_age = 1000.0 # algorithm for determining max age may change; currently, if the player gets a perfect run, their tree will be 1000
 
@@ -94,6 +102,26 @@ func _process(delta):
 		
 	if(all_good):
 		wisdom += delta * WISDOM_RATE
+	
+	if(wisdom >= 400 and quotes_gotten == 0):
+		get_node("Quote").set_text(quotes[0])
+		get_node("Quote/AnimationPlayer").play("display")
+		quotes_gotten = 1
+		
+	if(wisdom >= 600 and quotes_gotten == 1):
+		get_node("Quote").set_text(quotes[1])
+		get_node("Quote/AnimationPlayer").play("display")
+		quotes_gotten = 2
+		
+	if(wisdom >= 800 and quotes_gotten == 2):
+		get_node("Quote").set_text(quotes[2])
+		get_node("Quote/AnimationPlayer").play("display")
+		quotes_gotten = 3
+		
+	if(wisdom >= 1000 and quotes_gotten == 3):
+		get_node("Quote").set_text(quotes[3])
+		get_node("Quote/AnimationPlayer").play("display")
+		quotes_gotten = 4
 
 func current_light_rate():
 	return weather.current_light_rate() + shade.current_light_mod() + lightbulb.current_light_mod()
