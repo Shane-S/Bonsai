@@ -86,8 +86,9 @@ func _process(delta):
 		handle_light(delta)
 		all_good = false
 	
-	if(is_moisture_good() and not moisture_state == HEALTH_STATE.GOOD):
-		get_node("pot").set_texture(load("assets/textures/pot_normal.png"))
+	if(is_moisture_good()):
+		if(not moisture_state == HEALTH_STATE.GOOD):
+			get_node("pot").set_texture(load("assets/textures/pot_normal.png"))
 		moisture_state = HEALTH_STATE.GOOD
 	else:
 		handle_moisture(delta)
