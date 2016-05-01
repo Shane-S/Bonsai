@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=1]
+[gd_scene load_steps=5 format=1]
 
 [ext_resource path="res://scripts/weathers/sun.gd" type="Script" id=1]
 [ext_resource path="res://scenes/subshine.tscn" type="PackedScene" id=2]
 [ext_resource path="res://assets/textures/light_clouds.png" type="Texture" id=3]
+[ext_resource path="res://assets/textures/sunlight_shape.png" type="Texture" id=4]
 
 [node name="Sun" type="Node2D"]
 
@@ -19,6 +20,29 @@ z/z = -2
 z/z = -3
 texture = ExtResource( 3 )
 centered = false
+
+[node name="Light2D" type="Light2D" parent="."]
+
+transform/pos = Vector2( 955.295, -1000.06 )
+transform/scale = Vector2( 0.84717, 0.96568 )
+enabled = true
+texture = ExtResource( 4 )
+offset = Vector2( 0, 0 )
+scale = 500.0
+color = Color( 0.980469, 0.899082, 0.654922, 1 )
+energy = 0.25
+mode = 0
+range/height = 0.0
+range/z_min = -1024
+range/z_max = 1024
+range/layer_min = 0
+range/layer_max = 0
+range/item_mask = 1
+shadow/enabled = true
+shadow/color = Color( 0, 0, 0, 0 )
+shadow/buffer_size = 2048
+shadow/esm_multiplier = 80.0
+shadow/item_mask = 1
 
 
 [editable path="sunshine"]
