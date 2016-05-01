@@ -49,14 +49,14 @@ func random_point_in_ellipse():
 	return Vector2(x * ellipse_dims.x / 2, y * ellipse_dims.y / 2)
 	
 func restore():
+	get_node("Icicles").hide()
 	for sprite_obj in sprites:
 		sprite_obj["sprite"].set_texture(healthy_textures[sprite_obj["tex_idx"]])
 
 func make_icy():
-	pass
-	
+	get_node("Icicles").show()
+
 func make_brown():
-	print("make_brown")
 	for sprite_obj in sprites:
 		if randf() > brown_prob:
 			sprite_obj["sprite"].set_texture(brown_textures[sprite_obj["tex_idx"]])
