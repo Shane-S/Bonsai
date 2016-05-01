@@ -54,10 +54,15 @@ func _ready():
 	
 	var tree_scene = load(TREES[randi() % TREES.size()])
 	tree = tree_scene.instance()
+	moisture_zone["low_ok"] += tree.moisture_zone_adjust
+	moisture_zone["low_good"] += tree.moisture_zone_adjust
 	moisture_zone["high_ok"] += tree.moisture_zone_adjust
 	moisture_zone["high_good"] += tree.moisture_zone_adjust
+	
 	light_zone["low_ok"] += tree.light_zone_adjust
 	light_zone["low_good"] += tree.light_zone_adjust
+	light_zone["high_ok"] += tree.light_zone_adjust
+	light_zone["high_good"] += tree.light_zone_adjust
 	
 	add_child(tree)
 	set_process(true)
@@ -149,7 +154,7 @@ func handle_moisture(delta):
 			health -= HEALTH_LOSS_RATE * delta
 			set_pot_texture(load("assets/textures/pot_moist.png"))
 		else:
-			moisture_state = HEALTH_STATE.LOW_OK
+			moisture_state = HEALTH_STATE.HIGH_OK
 			set_pot_texture(load("assets/textures/pot_moist_ok.png"))
 
 func handle_light(delta):
@@ -165,9 +170,10 @@ func handle_light(delta):
 		if(light > light_zone.high_ok):
 			tree.make_leaves_brown()
 			light_state = HEALTH_STATE.HIGH_BAD
+			health -= HEALTH_LOSS_RATE * delta
 		else:
 			tree.make_some_leaves_brown()
-			health -= HEALTH_LOSS_RATE * delta
+			light_state = HEALTH_STATE.HIGH_OK
 
 func is_light_good():
 	return (light >= light_zone.low_good and light <= light_zone.high_good)

@@ -29,6 +29,8 @@ func make_some_leaves_icy():
 	for i in range(CLUMPS):
 		if(i % 2):
 			get_node("LeafClump" + str(i+1)).make_icy()
+		else:
+			get_node("LeafClump" + str(i+1)).restore()
 
 func make_leaves_icy():
 	for i in range(CLUMPS):
@@ -38,6 +40,8 @@ func make_some_leaves_brown():
 	for i in range(CLUMPS):
 		if(i % 2):
 			get_node("LeafClump" + str(i+1)).make_brown()
+		else:
+			get_node("LeafClump" + str(i+1)).restore()
 	
 func make_leaves_brown():
 	for i in range(CLUMPS):
