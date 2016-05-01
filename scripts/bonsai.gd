@@ -79,7 +79,7 @@ func _process(delta):
 		all_good = false
 	
 	if(is_moisture_good()):
-		if(not moisture_state == HEALTH_STATE.GOOD):
+		if(moisture_state != HEALTH_STATE.GOOD):
 			set_pot_texture(load("assets/textures/pot_normal.png"))
 		moisture_state = HEALTH_STATE.GOOD
 	else:
@@ -158,15 +158,15 @@ func handle_light(delta):
 			light_state = HEALTH_STATE.LOW_BAD
 			health -= HEALTH_LOSS_RATE * delta
 		else:
+			tree.make_some_leaves_icy()
 			light_state = HEALTH_STATE.LOW_OK
-			print("light too low: ", light)
-	elif(light > light_zone.high_ok):
+	elif(light > light_zone.high_good):
 		if(light > light_zone.high_ok):
 			tree.make_leaves_brown()
 			light_state = HEALTH_STATE.HIGH_BAD
 		else:
+			tree.make_some_leaves_brown()
 			health -= HEALTH_LOSS_RATE * delta
-			print("light too high: ", light)
 
 func is_light_good():
 	return (light >= light_zone.low_good and light <= light_zone.high_good)
