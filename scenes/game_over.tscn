@@ -1,0 +1,61 @@
+[gd_scene load_steps=3 format=1]
+
+[ext_resource path="res://scenes/game_over.gd" type="Script" id=1]
+[ext_resource path="res://assets/fonts/menu_font.fnt" type="Font" id=2]
+
+[node name="Node2D" type="Node2D"]
+
+transform/pos = Vector2( 282.379, 495.067 )
+script/script = ExtResource( 1 )
+
+[node name="Label" type="Label" parent="."]
+
+margin/left = -134.0
+margin/top = -25.0
+margin/right = 171.0
+margin/bottom = 22.0
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+custom_fonts/font = ExtResource( 2 )
+text = "Game Over"
+align = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="WisdomLabel" type="Label" parent="."]
+
+margin/left = -140.0
+margin/top = 31.0
+margin/right = 165.0
+margin/bottom = 78.0
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+custom_fonts/font = ExtResource( 2 )
+text = "Placeholder"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="AgeLabel" type="Label" parent="."]
+
+margin/left = -116.0
+margin/top = 87.0
+margin/right = 156.0
+margin/bottom = 132.0
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+custom_fonts/font = ExtResource( 2 )
+text = "Placeholder"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+
