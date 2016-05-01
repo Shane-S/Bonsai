@@ -33,7 +33,7 @@ z/z = 4
 
 [node name="shade" parent="bansai" instance=ExtResource( 4 )]
 
-transform/pos = Vector2( 85.9111, -274.324 )
+transform/pos = Vector2( 135.927, -273.693 )
 transform/scale = Vector2( 1.5, 1.57792 )
 z/z = 6
 open_sun_mod = -3
@@ -41,7 +41,7 @@ closed_sun_mod = 0
 
 [node name="watering_can" parent="bansai" instance=ExtResource( 5 )]
 
-transform/pos = Vector2( -180.762, -110.391 )
+transform/pos = Vector2( -183.56, -143.769 )
 transform/scale = Vector2( -1, 1 )
 z/z = 4
 
