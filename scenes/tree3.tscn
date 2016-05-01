@@ -10,6 +10,7 @@
 transform/scale = Vector2( 0.75, 0.75 )
 texture = ExtResource( 1 )
 script/script = ExtResource( 2 )
+clumps = 5
 
 [node name="LeafClump1" parent="." instance=ExtResource( 3 )]
 
@@ -29,6 +30,11 @@ num_sprites = 12
 [node name="LeafClump4" parent="." instance=ExtResource( 3 )]
 
 transform/pos = Vector2( -185.642, -62.2237 )
+num_sprites = 12
+
+[node name="LeafClump5" parent="." instance=ExtResource( 3 )]
+
+transform/pos = Vector2( -5.5742, -67.1346 )
 num_sprites = 12
 
 [node name="pot" type="Sprite" parent="."]
