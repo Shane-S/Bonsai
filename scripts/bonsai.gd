@@ -2,12 +2,13 @@
 extends Node2D
 
 # default wisdom zones for light and moisture
-const DEFAULT_MOISTURE_ZONE = {"low_ok" : 10.0, "low_good" : 17.5, "high_good" : 22.5, "high_ok" : 30.0}
+const DEFAULT_MOISTURE_ZONE = {"low_ok" : 10.0, "low_good" : 16, "high_good" : 24, "high_ok" : 30.0}
 const DEFAULT_LIGHT_ZONE = {"low_ok" : 10.0, "low_good" : 17.5, "high_good" : 22.5, "high_ok" : 30.0}
 const AGE_RATE = 10.0
 const DRY_RATE = 1.0
 const WISDOM_RATE = 30.0
-const HEALTH_LOSS_RATE = 50.0
+const HEALTH_LOSS_RATE = 200.0
+const START_HEALTH = 1000.0
 
 const HEALTH_STATE = {GOOD = 0, LOW_OK = 1, LOW_BAD = 2, HIGH_OK = 3, HIGH_BAD = 4}
 
@@ -29,7 +30,7 @@ var quotes = [
 var wisdom = 0.0
 var quotes_gotten = 0
 var age = 0.0
-var health = 1000.0
+var health = START_HEALTH
 
 # The zones in which the tree will gain wisdom and not age
 var moisture_zone
@@ -143,7 +144,7 @@ func handle_moisture(delta):
 			moisture_state = HEALTH_STATE.LOW_OK
 			set_pot_texture(load("assets/textures/pot_dry_ok.png"))
 	elif(moisture > moisture_zone.high_good):
-		if(moisture_state > moisture_zone.high_ok):
+		if(moisture > moisture_zone.high_ok):
 			moisture_state = HEALTH_STATE.HIGH_BAD
 			health -= HEALTH_LOSS_RATE * delta
 			set_pot_texture(load("assets/textures/pot_moist.png"))
