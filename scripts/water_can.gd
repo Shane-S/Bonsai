@@ -5,8 +5,6 @@ signal watering_can_clicked
 
 export(int) var water_amount = 3
 
-onready var water_anim = get_node("water/AnimationPlayer")
-
 func _on_Panel_input_event(evt):
 	#emit the signal on mouse-up.
 	#you can listen for the signal by using the connection editor

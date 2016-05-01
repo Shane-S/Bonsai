@@ -107,17 +107,17 @@ func _process(delta):
 		get_node("Quote").set_text(quotes[0])
 		get_node("Quote/AnimationPlayer").play("display")
 		quotes_gotten = 1
-		
+	
 	if(wisdom >= 600 and quotes_gotten == 1):
 		get_node("Quote").set_text(quotes[1])
 		get_node("Quote/AnimationPlayer").play("display")
 		quotes_gotten = 2
-		
+	
 	if(wisdom >= 800 and quotes_gotten == 2):
 		get_node("Quote").set_text(quotes[2])
 		get_node("Quote/AnimationPlayer").play("display")
 		quotes_gotten = 3
-		
+	
 	if(wisdom >= 1000 and quotes_gotten == 3):
 		get_node("Quote").set_text(quotes[3])
 		get_node("Quote/AnimationPlayer").play("display")
