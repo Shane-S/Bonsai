@@ -8,8 +8,7 @@ signal shade_changed
 export(bool) var is_open = false
 export(int) var open_sun_mod = -3
 export(int) var closed_sun_mod = 0
-onready var open_sprite = get_node("OpenSprite")
-onready var closed_sprite = get_node("ClosedSprite")
+onready var animation = get_node("BaseSprite/TopSprite/AnimationPlayer")
 
 func _ready():
 	if is_open:
@@ -24,18 +23,19 @@ func current_light_mod():
 		return closed_sun_mod
 
 func open():
-	is_open = true
-	open_sprite.show()
-	closed_sprite.hide()
+	if not is_open:
+		is_open = true
+		animation.play("open")
+		emit_signal("shade_changed")
 	emit_signal("shade_opened")
-	emit_signal("shade_changed")
 	
 func close():
-	is_open = false
-	open_sprite.hide()
-	closed_sprite.show()
+	if is_open:
+		is_open = false
+		animation.play("close")
+		emit_signal("shade_changed")
 	emit_signal("shade_closed")
-	emit_signal("shade_changed")
+	
 
 
 func _on_Panel_input_event( evt ):

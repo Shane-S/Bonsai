@@ -68,8 +68,7 @@ func _process(delta):
 	light += delta * current_light_rate()
 	if(age >= max_age):
 		age = max_age
-		# game over
-		return
+		get_node("/root/global").game_over(wisdom, age)
 	
 	# TODO: add absolute max and min, and stop game once one of these is hit
 	if(is_light_good() and is_moisture_good()):
@@ -79,7 +78,6 @@ func _process(delta):
 		handle_light(delta)
 
 func current_light_rate():
-	
 	return weather.current_light_rate() + shade.current_light_mod() + lightbulb.current_light_mod()
 
 func current_dry_rate():
