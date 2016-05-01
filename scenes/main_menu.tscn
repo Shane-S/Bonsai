@@ -3,11 +3,11 @@
 [ext_resource path="res://scripts/menu_script.gd" type="Script" id=1]
 [ext_resource path="res://scenes/sun.tscn" type="PackedScene" id=2]
 [ext_resource path="res://assets/textures/bonsai_logo_text.png" type="Texture" id=3]
-[ext_resource path="res://assets/textures/menu_bonsai.png" type="Texture" id=4]
-[ext_resource path="res://assets/textures/grass.png" type="Texture" id=5]
-[ext_resource path="res://assets/textures/rock_button.png" type="Texture" id=6]
-[ext_resource path="res://assets/textures/rock_button_dark.png" type="Texture" id=7]
-[ext_resource path="res://assets/fonts/menu_font.fnt" type="Font" id=8]
+[ext_resource path="res://assets/textures/grass.png" type="Texture" id=4]
+[ext_resource path="res://assets/textures/rock_button.png" type="Texture" id=5]
+[ext_resource path="res://assets/textures/rock_button_dark.png" type="Texture" id=6]
+[ext_resource path="res://assets/fonts/menu_font.fnt" type="Font" id=7]
+[ext_resource path="res://scenes/tree1.tscn" type="PackedScene" id=8]
 
 [node name="menu_container" type="Container"]
 
@@ -29,16 +29,12 @@ texture = ExtResource( 3 )
 
 [node name="tree" type="Sprite" parent="."]
 
-transform/pos = Vector2( 298.45, 532.26 )
-transform/scale = Vector2( 0.959838, 1 )
-texture = ExtResource( 4 )
-
 [node name="grass" type="Sprite" parent="."]
 
 transform/pos = Vector2( 309.757, 850.095 )
 transform/scale = Vector2( 1.08795, 1.40568 )
 z/z = -1
-texture = ExtResource( 5 )
+texture = ExtResource( 4 )
 
 [node name="play_button" type="TextureButton" parent="."]
 
@@ -53,9 +49,9 @@ size_flags/horizontal = 3
 size_flags/vertical = 2
 toggle_mode = false
 click_on_press = true
-textures/normal = ExtResource( 6 )
-textures/pressed = ExtResource( 7 )
-textures/hover = ExtResource( 7 )
+textures/normal = ExtResource( 5 )
+textures/pressed = ExtResource( 6 )
+textures/hover = ExtResource( 6 )
 
 [node name="exit_button" type="TextureButton" parent="."]
 
@@ -70,9 +66,9 @@ size_flags/horizontal = 3
 size_flags/vertical = 2
 toggle_mode = false
 click_on_press = true
-textures/normal = ExtResource( 6 )
-textures/pressed = ExtResource( 7 )
-textures/hover = ExtResource( 7 )
+textures/normal = ExtResource( 5 )
+textures/pressed = ExtResource( 6 )
+textures/hover = ExtResource( 6 )
 
 [node name="play_text" type="Label" parent="."]
 
@@ -83,7 +79,7 @@ margin/bottom = 904.0
 focus/ignore_mouse = true
 focus/stop_mouse = true
 size_flags/horizontal = 2
-custom_fonts/font = ExtResource( 8 )
+custom_fonts/font = ExtResource( 7 )
 text = "Play"
 percent_visible = 1.0
 lines_skipped = 0
@@ -98,14 +94,39 @@ margin/bottom = 910.0
 focus/ignore_mouse = true
 focus/stop_mouse = true
 size_flags/horizontal = 2
-custom_fonts/font = ExtResource( 8 )
+custom_fonts/font = ExtResource( 7 )
 text = "Exit"
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
+
+[node name="tree 2" parent="." instance=ExtResource( 8 )]
+
+transform/pos = Vector2( 307.699, 553.499 )
+transform/scale = Vector2( 0.900114, 0.993073 )
+clumps = 4
+color_override = "green"
+
+[node name="LeafClump1" parent="tree 2"]
+
+color_override = "green"
+
+[node name="LeafClump2" parent="tree 2"]
+
+brown_prob = 0.499
+color_override = "green"
+
+[node name="LeafClump3" parent="tree 2"]
+
+color_override = "green"
+
+[node name="LeafClump4" parent="tree 2"]
+
+color_override = "green"
 
 [connection signal="pressed" from="play_button" to="." method="_on_play_button_pressed"]
 
 [connection signal="pressed" from="exit_button" to="." method="_on_exit_button_pressed"]
 
 
+[editable path="tree 2"]

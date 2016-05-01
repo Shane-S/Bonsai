@@ -12,6 +12,7 @@ const TEXTURES = {
 export(Vector2) var ellipse_dims = Vector2(50, 50)
 export(int) var num_sprites = 10
 export(float) var brown_prob = 0.5
+export(String) var color_override = null
 
 var healthy_color = null
 var healthy_textures = []
@@ -22,6 +23,8 @@ func _ready():
 	for tex_path in TEXTURES["brown"]:
 		brown_textures.append(load(tex_path))
 	randomize()
+	if color_override:
+		initialize(color_override)
 	
 
 
