@@ -2,17 +2,17 @@
 extends Node2D
 
 # default wisdom zones for light and moisture
-const DEFAULT_MOISTURE_ZONE = {"low" : 10.0, "high" : 30.0}
-const DEFAULT_LIGHT_ZONE = {"low" : 10.0, "high" : 30.0}
+const DEFAULT_MOISTURE_ZONE = {"low_ok" : 10.0, "low_good" : 17.5, "high_good" : 22.5, "high_ok" : 30.0}
+const DEFAULT_LIGHT_ZONE = {"low_ok" : 10.0, "low_good" : 17.5, "high_good" : 22.5, "high_ok" : 30.0}
 const AGE_RATE = 10.0
 const DRY_RATE = 1.0
 const WISDOM_RATE = 30.0
+const HEALTH_LOSS_RATE = 50.0
 
-const HEALTH_STATE = {GOOD = 0, LOW = 1, HIGH = 2}
+const HEALTH_STATE = {GOOD = 0, LOW_OK = 1, LOW_BAD = 2, HIGH_OK = 3, HIGH_BAD = 4}
 
 var moisture = 20.0
 var light = 20.0
-
 
 var moisture_state = HEALTH_STATE.GOOD
 var light_state = HEALTH_STATE.GOOD
@@ -29,7 +29,7 @@ var quotes = [
 var wisdom = 0.0
 var quotes_gotten = 0
 var age = 0.0
-var max_age = 1000.0 # algorithm for determining max age may change; currently, if the player gets a perfect run, their tree will be 1000
+var health = 1000.0
 
 # The zones in which the tree will gain wisdom and not age
 var moisture_zone
@@ -53,16 +53,19 @@ func _ready():
 	
 	var tree_scene = load(TREES[randi() % TREES.size()])
 	tree = tree_scene.instance()
+	moisture_zone["high_ok"] += tree.moisture_zone_adjust
+	moisture_zone["high_good"] += tree.moisture_zone_adjust
+	light_zone["low_ok"] += tree.light_zone_adjust
+	light_zone["low_good"] += tree.light_zone_adjust
+	
 	add_child(tree)
 	set_process(true)
-	pass
 
 func _process(delta):
 	age += delta * AGE_RATE
 	moisture -= delta * current_dry_rate()
 	light += delta * current_light_rate()
-	if(age >= max_age):
-		age = max_age
+	if(health <= 0):
 		get_node("/root/global").game_over(wisdom, age)
 	
 	# TODO: add absolute max and min, and stop game once one of these is hit
@@ -131,40 +134,45 @@ func current_dry_rate():
 	return weather.current_dry_rate()
 	
 func handle_moisture(delta):
-	if(moisture < moisture_zone.low):
-		moisture_state = HEALTH_STATE.LOW
-		var diff = moisture_zone.low - moisture
-		max_age -= diff * delta
-		set_pot_texture(load("assets/textures/pot_dry.png"))
-		print("moisture too low: ", moisture)
-	elif(moisture > moisture_zone.high):
-		moisture_state = HEALTH_STATE.HIGH
-		var diff = moisture - moisture_zone.high
-		max_age -= diff * delta
-		set_pot_texture(load("assets/textures/pot_moist.png"))
-		print("moisture too high: ", moisture)
+	if(moisture < moisture_zone.low_good):
+		if(moisture < moisture_zone.low_ok):
+			moisture_state = HEALTH_STATE.LOW_BAD
+			health -= HEALTH_LOSS_RATE * delta
+			set_pot_texture(load("assets/textures/pot_dry.png"))
+		else:
+			moisture_state = HEALTH_STATE.LOW_OK
+			set_pot_texture(load("assets/textures/pot_dry_ok.png"))
+	elif(moisture > moisture_zone.high_good):
+		if(moisture_state > moisture_zone.high_ok):
+			moisture_state = HEALTH_STATE.HIGH_BAD
+			health -= HEALTH_LOSS_RATE * delta
+			set_pot_texture(load("assets/textures/pot_moist.png"))
+		else:
+			moisture_state = HEALTH_STATE.LOW_OK
+			set_pot_texture(load("assets/textures/pot_moist_ok.png"))
 
 func handle_light(delta):
-	if(light < light_zone.low):
-		if light_state != HEALTH_STATE.LOW:
+	if(light < light_zone.low_good):
+		if(light < light_zone.low_ok):
 			tree.make_leaves_icy()
-		light_state = HEALTH_STATE.LOW
-		var diff = light_zone.low - light
-		max_age -= diff * delta
-		print("light too low: ", light)
-	elif(light > light_zone.high):
-		if light_state != HEALTH_STATE.HIGH:
+			light_state = HEALTH_STATE.LOW_BAD
+			health -= HEALTH_LOSS_RATE * delta
+		else:
+			light_state = HEALTH_STATE.LOW_OK
+			print("light too low: ", light)
+	elif(light > light_zone.high_ok):
+		if(light > light_zone.high_ok):
 			tree.make_leaves_brown()
-		light_state = HEALTH_STATE.HIGH
-		var diff = light - light_zone.high
-		max_age -= diff * delta
-		print("light too high: ", light)
+			light_state = HEALTH_STATE.HIGH_BAD
+		else:
+			health -= HEALTH_LOSS_RATE * delta
+			print("light too high: ", light)
 
 func is_light_good():
-	return (light >= light_zone.low and light <= light_zone.high)
+	return (light >= light_zone.low_good and light <= light_zone.high_good)
 
 func is_moisture_good():
-	return (moisture >= moisture_zone.low and moisture <= moisture_zone.high)
+	return (moisture >= moisture_zone.low_good and moisture <= moisture_zone.high_good)
 
 func _on_watering_can_pressed():
 	moisture += watering_can.water_amount
