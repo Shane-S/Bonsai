@@ -10,32 +10,40 @@
 transform/scale = Vector2( 0.75, 0.75 )
 texture = ExtResource( 1 )
 script/script = ExtResource( 2 )
-clumps = 5
+clumps = 6
+color_override = null
 
 [node name="LeafClump1" parent="." instance=ExtResource( 3 )]
 
 transform/pos = Vector2( 184.198, -49.9285 )
 num_sprites = 12
+color_override = null
 
 [node name="LeafClump2" parent="." instance=ExtResource( 3 )]
 
 transform/pos = Vector2( 112.61, -102.634 )
 num_sprites = 12
+color_override = null
 
 [node name="LeafClump3" parent="." instance=ExtResource( 3 )]
 
-transform/pos = Vector2( -99.9129, -112.095 )
+transform/pos = Vector2( 21.2319, -86.9796 )
+transform/scale = Vector2( 1, 1 )
+z/z = -1
 num_sprites = 12
+color_override = null
 
 [node name="LeafClump4" parent="." instance=ExtResource( 3 )]
 
-transform/pos = Vector2( -185.642, -62.2237 )
+transform/pos = Vector2( -37.9044, -51.8821 )
 num_sprites = 12
+color_override = null
 
 [node name="LeafClump5" parent="." instance=ExtResource( 3 )]
 
-transform/pos = Vector2( -5.5742, -67.1346 )
+transform/pos = Vector2( -98.6489, -111.456 )
 num_sprites = 12
+color_override = null
 
 [node name="pot" type="Sprite" parent="."]
 
@@ -43,5 +51,11 @@ transform/pos = Vector2( 0, 175 )
 transform/scale = Vector2( 2.5, 2.5 )
 z/z = -1
 texture = ExtResource( 4 )
+
+[node name="LeafClump6" parent="." instance=ExtResource( 3 )]
+
+transform/pos = Vector2( -190.246, -62.7025 )
+num_sprites = 12
+color_override = null
 
 
