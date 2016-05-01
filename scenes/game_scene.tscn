@@ -71,7 +71,7 @@ texture = ExtResource( 10 )
 
 [node name="Sprite 2" type="Sprite" parent="."]
 
-transform/pos = Vector2( -6.47803, 388.371 )
+transform/pos = Vector2( -16.4991, 348.287 )
 transform/scale = Vector2( 0.4, 0.4 )
 texture = ExtResource( 11 )
 
