@@ -37,6 +37,9 @@ onready var watering_can = get_node("watering_can")
 onready var lightbulb = get_node("light")
 onready var weather = get_node("../Weather")
 
+const TREES = ["res://scenes/shane_tree.tscn", "res://scenes/clark_tree.tscn"]
+var tree = null
+
 func _ready():
 	watering_can.connect("watering_can_clicked", self, "_on_watering_can_pressed")
 	
@@ -45,26 +48,9 @@ func _ready():
 	
 	randomize()
 	
-	# create the random branch colours
-	# HACKS INBOUND
-	var colours = ["green", "red", "blue", "pink"]
-	for i in range(6):
-		var colour = randi() % 4
-		get_node("LeafClump" + str(i+1)).initialize(colours[colour])
-	
-		# change the moisture and light values according to the colours
-		if(colour == 0):
-			moisture_zone["low"] += 1.2
-			moisture_zone["high"] += 1.2
-		elif(colour == 1):
-			moisture_zone["low"] -= 1.2
-			moisture_zone["high"] -= 1.2
-		elif(colour == 2):
-			light_zone["low"] += 1.2
-			light_zone["high"] += 1.2
-		else:
-			light_zone["low"] -= 1.2
-			light_zone["high"] -= 1.2
+	var tree_scene = load(TREES[randi() % TREES.size()])
+	tree = tree_scene.instance()
+	add_child(tree)
 	set_process(true)
 	pass
 
@@ -87,7 +73,7 @@ func _process(delta):
 		all_good = false
 	
 	if(is_moisture_good() and not moisture_state == HEALTH_STATE.GOOD):
-		get_node("pot").set_texture(load("assets/textures/pot_normal.png"))
+		set_pot_texture(load("assets/textures/pot_normal.png"))
 		moisture_state = HEALTH_STATE.GOOD
 	else:
 		handle_moisture(delta)
@@ -116,6 +102,9 @@ func _process(delta):
 		get_node("Quote/AnimationPlayer").play("Quote")
 		quotes_gotten = 4
 
+func set_pot_texture(texture):
+	tree.get_node("pot").set_texture(texture)
+
 func current_light_rate():
 	return weather.current_light_rate() + shade.current_light_mod() + lightbulb.current_light_mod()
 
@@ -127,13 +116,13 @@ func handle_moisture(delta):
 		moisture_state = HEALTH_STATE.LOW
 		var diff = moisture_zone.low - moisture
 		max_age -= diff * delta
-		get_node("pot").set_texture(load("assets/textures/pot_dry.png"))
+		set_pot_texture(load("assets/textures/pot_dry.png"))
 		print("moisture too low: ", moisture)
 	elif(moisture > moisture_zone.high):
 		moisture_state = HEALTH_STATE.HIGH
 		var diff = moisture - moisture_zone.high
 		max_age -= diff * delta
-		get_node("pot").set_texture(load("assets/textures/pot_moist.png"))
+		set_pot_texture(load("assets/textures/pot_moist.png"))
 		print("moisture too high: ", moisture)
 
 func handle_light(delta):

@@ -1,0 +1,56 @@
+[gd_scene load_steps=5 format=1]
+
+[ext_resource path="res://assets/textures/empty_tree.png" type="Texture" id=1]
+[ext_resource path="res://scenes/shane_tree.gd" type="Script" id=2]
+[ext_resource path="res://scenes/leaf_clump.tscn" type="PackedScene" id=3]
+[ext_resource path="res://assets/textures/pot_normal.png" type="Texture" id=4]
+
+[node name="tree" type="Sprite"]
+
+texture = ExtResource( 1 )
+script/script = ExtResource( 2 )
+
+[node name="LeafClump1" parent="." instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 106.49, 56.4758 )
+transform/scale = Vector2( 1.31703, 1 )
+num_sprites = 6
+
+[node name="LeafClump2" parent="." instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 22.6019, -128.223 )
+transform/scale = Vector2( 1.64977, 1.59222 )
+num_sprites = 12
+
+[node name="LeafClump3" parent="." instance=ExtResource( 3 )]
+
+transform/pos = Vector2( -81.4325, -89.0127 )
+transform/scale = Vector2( 1.256, 1.28769 )
+num_sprites = 6
+
+[node name="LeafClump4" parent="." instance=ExtResource( 3 )]
+
+transform/pos = Vector2( -134.548, -25.1705 )
+transform/scale = Vector2( 1.57304, 1.13422 )
+num_sprites = 6
+
+[node name="LeafClump5" parent="." instance=ExtResource( 3 )]
+
+transform/pos = Vector2( -100.997, 49.7213 )
+transform/scale = Vector2( 1.43213, 1.09586 )
+num_sprites = 6
+
+[node name="LeafClump6" parent="." instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 111.401, -52.1807 )
+transform/scale = Vector2( 1.2403, 1.09586 )
+num_sprites = 6
+
+[node name="pot" type="Sprite" parent="."]
+
+transform/pos = Vector2( 0, 179.931 )
+transform/scale = Vector2( 1.1081, 1.32053 )
+z/z = -1
+texture = ExtResource( 4 )
+
+
