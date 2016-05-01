@@ -3,7 +3,7 @@
 [ext_resource path="res://scripts/water_can.gd" type="Script" id=1]
 [ext_resource path="res://assets/textures/watering_can.png" type="Texture" id=2]
 
-[sub_resource type="Animation" id=2]
+[sub_resource type="Animation" id=1]
 
 resource/name = "water"
 length = 2.0
@@ -12,7 +12,7 @@ step = 0.1
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:config/emitting")
 tracks/0/interp = 1
-tracks/0/keys = { "cont":true, "times":FloatArray( 0, 1 ), "transitions":FloatArray( 1, 1 ), "values":[ true, false ] }
+tracks/0/keys = { "cont":true, "times":FloatArray( 0, 0.5 ), "transitions":FloatArray( 1, 1 ), "values":[ true, false ] }
 
 [node name="Watering Can" type="Node2D"]
 
@@ -38,14 +38,14 @@ texture = ExtResource( 2 )
 
 [node name="Water" type="Particles2D" parent="."]
 
-transform/pos = Vector2( -120, 100 )
+transform/pos = Vector2( -90.4908, 71.6069 )
 config/amount = 100
-config/lifetime = 1.5
+config/lifetime = 0.7
 config/emitting = false
 config/half_extents = Vector2( 20, 20 )
-params/direction = 335.0
+params/direction = 300.0
 params/spread = 15.0
-params/linear_velocity = 100.0
+params/linear_velocity = 200.0
 params/spin_velocity = 5.0
 params/orbit_velocity = 0.0
 params/gravity_direction = 0.0
@@ -69,7 +69,7 @@ color/color = Color( 0.193115, 0.193115, 0.882813, 1 )
 playback/process_mode = 1
 playback/default_blend_time = 0.0
 root/root = NodePath("..")
-anims/water = SubResource( 2 )
+anims/water = SubResource( 1 )
 playback/active = true
 playback/speed = 1.0
 blend_times = [  ]

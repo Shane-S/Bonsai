@@ -26,7 +26,7 @@ centered = false
 
 [node name="Light2D" type="Light2D" parent="."]
 
-transform/pos = Vector2( 594.854, 10.4829 )
+transform/pos = Vector2( 600, -70 )
 enabled = true
 texture = ExtResource( 4 )
 offset = Vector2( 0, 0 )

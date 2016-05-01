@@ -20,7 +20,7 @@ centered = false
 
 transform/pos = Vector2( 300, 0 )
 z/z = -2
-config/amount = 750
+config/amount = 500
 config/lifetime = 3.0
 config/half_extents = Vector2( 400, 0 )
 params/direction = 0.0
