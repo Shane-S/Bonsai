@@ -10,7 +10,7 @@ const WISDOM_RATE = 30.0
 
 var moisture = 20.0
 var light = 20.0
-var light_mod = 0.0
+
 var wisdom = 0.0
 var age = 0.0
 var max_age = 1000.0 # algorithm for determining max age may change; currently, if the player gets a perfect run, their tree will be 1000
@@ -23,10 +23,13 @@ var light_zone
 
 onready var shade = get_node("shade")
 onready var watering_can = get_node("watering_can")
+onready var lightbulb = get_node("light")
+onready var weather = get_node("../Weather")
 
 func _ready():
 	watering_can.connect("watering_can_clicked", self, "_on_watering_can_pressed")
 	shade.connect("shade_changed", self, "_on_shade_changed")
+	
 	moisture_zone = DEFAULT_MOISTURE_ZONE
 	light_zone = DEFAULT_LIGHT_ZONE
 	
@@ -62,7 +65,9 @@ func _ready():
 
 func _process(delta):
 	age += delta * AGE_RATE
-	moisture -= delta * DRY_RATE
+	moisture -= delta * current_dry_rate()
+	light += delta * current_light_rate()
+	#print("moisture: ", moisture, " light: ", light)
 	if(age >= max_age):
 		age = max_age
 		# game over
@@ -74,39 +79,39 @@ func _process(delta):
 	else:
 		handle_moisture(delta)
 		handle_light(delta)
-	#decrease the moisture
 
-func current_light():
-	return light + light_mod
+func current_light_rate():
+	return weather.current_light_rate() + shade.current_light_mod() + lightbulb.current_light_mod()
 
+func current_dry_rate():
+	return weather.current_dry_rate()
+	
 func handle_moisture(delta):
 	if(moisture < moisture_zone.low):
 		var diff = moisture_zone.low - moisture
 		max_age -= diff * delta
+		print("moisture: ", moisture)
 	elif(moisture > moisture_zone.high):
 		var diff = moisture - moisture_zone.high
 		max_age -= diff * delta
+		print("moisture: ", moisture)
 
 func handle_light(delta):
-	if(current_light() < light_zone.low):
+	if(light < light_zone.low):
 		var diff = light_zone.low - light
 		max_age -= diff * delta
-	elif(current_light() > light_zone.high):
-		var diff = current_light() - light_zone.high
+		print("light: ", light)
+	elif(light > light_zone.high):
+		var diff = light - light_zone.high
 		max_age -= diff * delta
+		print("light: ", light)
 
 func is_light_good():
-	return (current_light() >= light_zone.low and current_light() <= light_zone.high)
+	return (light >= light_zone.low and light <= light_zone.high)
 
 func is_moisture_good():
 	return (moisture >= moisture_zone.low and moisture <= moisture_zone.high)
 
 func _on_watering_can_pressed():
-	print("watering can clicked received! in bansai")
 	moisture += watering_can.water_amount
-	print("moisture set to ", moisture)
-	
-func _on_shade_changed():
-	print("shade changed received! in bansai")
-	light_mod = shade.sun_mod
-	print("light mod set to ", light_mod)
+

@@ -18,6 +18,12 @@ func _ready():
 	else:
 		close()
 
+func current_light_mod():
+	if is_open:
+		return open_sun_mod
+	else:
+		return closed_sun_mod
+
 func open():
 	is_open = true
 	sun_mod = open_sun_mod

@@ -21,15 +21,23 @@ script/script = ExtResource( 2 )
 
 [node name="Sun" parent="." instance=ExtResource( 3 )]
 
+light_level = 0.0
+
 [node name="Rain" parent="." instance=ExtResource( 4 )]
+
+light_level = -1.0
 
 [node name="Drought" parent="." instance=ExtResource( 5 )]
 
+light_level = 2.0
+dry_rate = 2.0
+
 [node name="Winter" parent="." instance=ExtResource( 6 )]
+
+light_level = -2.0
 
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
 
 [connection signal="timeout" from="Timer" to="Timer" method="_on_timeout"]
 
 
-[editable path="Sun"]

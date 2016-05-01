@@ -6,6 +6,7 @@ signal weather_changed
 var all_weathers = []
 var cur_weather = null
 
+
 func _ready():
 	#get the default weather
 	cur_weather = get_node("Sun")
@@ -23,10 +24,15 @@ func update_visibilities():
 		else:
 			weather.hide()
 
+func current_dry_rate():
+	return cur_weather.dry_rate
+
+func current_light_rate():
+	return cur_weather.light_level
+
 func _on_Timer_timeout():
 	#select a random next weather
 	var idx = randi() % all_weathers.size()
 	cur_weather = all_weathers[idx]
 	update_visibilities()
-	print("emitting signal weather changed")
 	emit_signal("weather_changed")

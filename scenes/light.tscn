@@ -1,0 +1,33 @@
+[gd_scene load_steps=3 format=1]
+
+[ext_resource path="res://scripts/light.gd" type="Script" id=1]
+[ext_resource path="res://assets/textures/light.png" type="Texture" id=2]
+
+[node name="Light" type="Node2D"]
+
+script/script = ExtResource( 1 )
+enabled = false
+enabled_light_mod = 3.0
+
+[node name="Sprite" type="Sprite" parent="."]
+
+transform/scale = Vector2( 0.25, 0.25 )
+texture = ExtResource( 2 )
+flip_v = true
+modulate = Color( 0.172549, 0.164706, 0.196078, 1 )
+
+[node name="Panel" type="Panel" parent="."]
+
+visibility/opacity = 0.0
+margin/left = -30.0
+margin/top = -37.0
+margin/right = 30.0
+margin/bottom = 44.0
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+
+[connection signal="input_event" from="Panel" to="." method="_on_Panel_input_event"]
+
+
