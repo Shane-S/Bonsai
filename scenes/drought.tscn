@@ -14,11 +14,12 @@ dry_rate = 1.0
 
 transform/pos = Vector2( 455.223, 128.189 )
 transform/scale = Vector2( 1.34513, 1.21098 )
+z/z = -2
 modulate = Color( 1, 0.320648, 0.230469, 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
 
-z/z = -1
+z/z = -3
 texture = ExtResource( 3 )
 centered = false
 

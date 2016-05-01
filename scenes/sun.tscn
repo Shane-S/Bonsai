@@ -4,7 +4,6 @@
 [ext_resource path="res://scenes/subshine.tscn" type="PackedScene" id=2]
 [ext_resource path="res://assets/textures/light_clouds.png" type="Texture" id=3]
 
-
 [node name="Sun" type="Node2D"]
 
 script/script = ExtResource( 1 )
@@ -13,9 +12,11 @@ dry_rate = 1.0
 
 [node name="sunshine" parent="." instance=ExtResource( 2 )]
 
+z/z = -2
+
 [node name="Sprite" type="Sprite" parent="."]
 
-z/z = -1
+z/z = -3
 texture = ExtResource( 3 )
 centered = false
 
