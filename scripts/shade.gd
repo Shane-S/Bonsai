@@ -40,6 +40,7 @@ func close():
 
 func _on_Panel_input_event( evt ):
 	if (evt.type == InputEvent.MOUSE_BUTTON and not evt.is_pressed()):
+		get_node("hinge_sound").play("hinge")
 		if is_open:
 			close()
 		else:

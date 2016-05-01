@@ -1,16 +1,21 @@
-[gd_scene load_steps=12 format=1]
+[gd_scene load_steps=14 format=1]
 
 [ext_resource path="res://scenes/weather.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/bonsai.tscn" type="PackedScene" id=2]
-[ext_resource path="res://assets/textures/greenhouse.png" type="Texture" id=3]
-[ext_resource path="res://scenes/light.tscn" type="PackedScene" id=4]
-[ext_resource path="res://scenes/shade.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/light.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/shade.tscn" type="PackedScene" id=4]
+[ext_resource path="res://assets/audio/hinge.wav" type="Sample" id=5]
 [ext_resource path="res://scenes/watering_can.tscn" type="PackedScene" id=6]
-[ext_resource path="res://assets/textures/health_bar.png" type="Texture" id=7]
-[ext_resource path="res://scripts/health_update.gd" type="Script" id=8]
-[ext_resource path="res://assets/textures/health.png" type="Texture" id=9]
-[ext_resource path="res://assets/textures/grass.png" type="Texture" id=10]
-[ext_resource path="res://assets/textures/rock_button.png" type="Texture" id=11]
+[ext_resource path="res://assets/textures/greenhouse.png" type="Texture" id=7]
+[ext_resource path="res://assets/textures/health_bar.png" type="Texture" id=8]
+[ext_resource path="res://scripts/health_update.gd" type="Script" id=9]
+[ext_resource path="res://assets/textures/health.png" type="Texture" id=10]
+[ext_resource path="res://assets/textures/grass.png" type="Texture" id=11]
+[ext_resource path="res://assets/textures/rock_button.png" type="Texture" id=12]
+
+[sub_resource type="SampleLibrary" id=1]
+
+samples/hinge = { "db":0.0, "pitch":0.84, "sample":ExtResource( 5 ) }
 
 [node name="Node2D" type="Node2D"]
 
@@ -26,19 +31,12 @@ transform/pos = Vector2( -300.149, -514.358 )
 transform/pos = Vector2( -14.5342, 84.1282 )
 transform/scale = Vector2( 0.709784, 0.749732 )
 
-[node name="house" type="Sprite" parent="bansai"]
-
-transform/pos = Vector2( 0, -66.6907 )
-transform/scale = Vector2( 1.73429, 1.79312 )
-z/z = 5
-texture = ExtResource( 3 )
-
-[node name="light" parent="bansai" instance=ExtResource( 4 )]
+[node name="light" parent="bansai" instance=ExtResource( 3 )]
 
 transform/pos = Vector2( 1.64673, -187.219 )
 z/z = 4
 
-[node name="shade" parent="bansai" instance=ExtResource( 5 )]
+[node name="shade" parent="bansai" instance=ExtResource( 4 )]
 
 transform/pos = Vector2( 258.741, -228.439 )
 transform/scale = Vector2( 1.5, 1.57792 )
@@ -46,34 +44,55 @@ z/z = 6
 open_sun_mod = -3
 closed_sun_mod = 0
 
+[node name="hinge_sound" type="SamplePlayer2D" parent="bansai/shade"]
+
+transform/pos = Vector2( -14.6727, 130.37 )
+transform/scale = Vector2( 0.939253, 0.845296 )
+params/volume_db = 0.0
+params/pitch_scale = 1.0
+params/attenuation/min_distance = 1.0
+params/attenuation/max_distance = 2048.0
+params/attenuation/distance_exp = 1.0
+config/polyphony = 1
+config/samples = SubResource( 1 )
+config/pitch_random = 0.0
+
 [node name="watering_can" parent="bansai" instance=ExtResource( 6 )]
 
 transform/pos = Vector2( -218.802, -78.3796 )
 transform/scale = Vector2( -1, 1 )
 z/z = 4
 
+[node name="house" type="Sprite" parent="bansai"]
+
+transform/pos = Vector2( 0, -66.6907 )
+transform/scale = Vector2( 1.73429, 1.79312 )
+z/z = 5
+texture = ExtResource( 7 )
+
 [node name="health_bar" type="Sprite" parent="."]
 
 transform/pos = Vector2( -138.101, -487.854 )
-texture = ExtResource( 7 )
-script/script = ExtResource( 8 )
+texture = ExtResource( 8 )
+script/script = ExtResource( 9 )
+__meta__ = { "_editor_collapsed":true }
 
 [node name="health" type="Sprite" parent="health_bar"]
 
-texture = ExtResource( 9 )
+texture = ExtResource( 10 )
 
-[node name="Sprite" type="Sprite" parent="."]
+[node name="grass" type="Sprite" parent="."]
 
 transform/pos = Vector2( 7.30771, 306.211 )
 transform/scale = Vector2( 1.08795, 1.70693 )
 z/z = -3
-texture = ExtResource( 10 )
-
-[node name="Sprite 2" type="Sprite" parent="."]
-
-transform/pos = Vector2( -16.4991, 348.287 )
-transform/scale = Vector2( 0.4, 0.4 )
 texture = ExtResource( 11 )
+
+[node name="rock" type="Sprite" parent="."]
+
+transform/pos = Vector2( -4.62738, 382.476 )
+transform/scale = Vector2( 0.4, 0.4 )
+texture = ExtResource( 12 )
 
 
 [editable path="Weather"]
