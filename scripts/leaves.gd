@@ -3,13 +3,17 @@ extends Sprite
 
 const COLOURS = ["green", "red", "blue", "pink"]
 export(int) var clumps = 4
+export(String) var color_override = null
 var moisture_zone_adjust = 0
 var light_zone_adjust = 0
 
 func _ready():
 	for i in range(clumps):
 		var colour = randi() % 4
-		get_node("LeafClump" + str(i+1)).initialize(COLOURS[colour])
+		if color_override:
+			get_node("LeafClump" + str(i+1)).initialize(color_override)
+		else:
+			get_node("LeafClump" + str(i+1)).initialize(COLOURS[colour])
 	
 		# change the moisture and light values according to the colours
 		if(colour == 0):

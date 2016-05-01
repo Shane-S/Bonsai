@@ -5,8 +5,8 @@
 [ext_resource path="res://assets/textures/rock_button_dark.png" type="Texture" id=3]
 [ext_resource path="res://scenes/sun.tscn" type="PackedScene" id=4]
 [ext_resource path="res://assets/textures/bonsai_logo_text.png" type="Texture" id=5]
-[ext_resource path="res://assets/textures/menu_bonsai.png" type="Texture" id=6]
-[ext_resource path="res://assets/textures/grass.png" type="Texture" id=7]
+[ext_resource path="res://assets/textures/grass.png" type="Texture" id=6]
+[ext_resource path="res://scenes/tree1.tscn" type="PackedScene" id=7]
 
 [node name="menu_container" type="Container"]
 
@@ -43,19 +43,38 @@ textures/hover = ExtResource( 3 )
 transform/pos = Vector2( 290.855, 210.593 )
 texture = ExtResource( 5 )
 
-[node name="tree" type="Sprite" parent="."]
-
-transform/pos = Vector2( 298.45, 532.26 )
-transform/scale = Vector2( 0.959838, 1 )
-texture = ExtResource( 6 )
-
 [node name="grass" type="Sprite" parent="."]
 
 transform/pos = Vector2( 309.757, 850.095 )
 transform/scale = Vector2( 1.08795, 1.40568 )
 z/z = -1
-texture = ExtResource( 7 )
+texture = ExtResource( 6 )
+
+[node name="tree 2" parent="." instance=ExtResource( 7 )]
+
+transform/pos = Vector2( 307.699, 553.499 )
+transform/scale = Vector2( 0.900114, 0.993073 )
+clumps = 4
+color_override = "green"
+
+[node name="LeafClump1" parent="tree 2"]
+
+color_override = "green"
+
+[node name="LeafClump2" parent="tree 2"]
+
+brown_prob = 0.499
+color_override = "green"
+
+[node name="LeafClump3" parent="tree 2"]
+
+color_override = "green"
+
+[node name="LeafClump4" parent="tree 2"]
+
+color_override = "green"
 
 [connection signal="pressed" from="play_button" to="." method="_on_play_button_pressed"]
 
 
+[editable path="tree 2"]
