@@ -15,36 +15,42 @@ script/script = ExtResource( 2 )
 transform/pos = Vector2( 106.49, 56.4758 )
 transform/scale = Vector2( 1.31703, 1 )
 num_sprites = 6
+brown_prob = 0.5
 
 [node name="LeafClump2" parent="." instance=ExtResource( 3 )]
 
 transform/pos = Vector2( 22.6019, -128.223 )
 transform/scale = Vector2( 1.64977, 1.59222 )
 num_sprites = 12
+brown_prob = 0.5
 
 [node name="LeafClump3" parent="." instance=ExtResource( 3 )]
 
 transform/pos = Vector2( -81.4325, -89.0127 )
 transform/scale = Vector2( 1.256, 1.28769 )
 num_sprites = 6
+brown_prob = 0.5
 
 [node name="LeafClump4" parent="." instance=ExtResource( 3 )]
 
 transform/pos = Vector2( -134.548, -25.1705 )
 transform/scale = Vector2( 1.57304, 1.13422 )
 num_sprites = 6
+brown_prob = 0.5
 
 [node name="LeafClump5" parent="." instance=ExtResource( 3 )]
 
 transform/pos = Vector2( -100.997, 49.7213 )
 transform/scale = Vector2( 1.43213, 1.09586 )
 num_sprites = 6
+brown_prob = 0.5
 
 [node name="LeafClump6" parent="." instance=ExtResource( 3 )]
 
 transform/pos = Vector2( 111.401, -52.1807 )
 transform/scale = Vector2( 1.2403, 1.09586 )
 num_sprites = 6
+brown_prob = 0.5
 
 [node name="pot" type="Sprite" parent="."]
 

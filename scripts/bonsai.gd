@@ -68,9 +68,9 @@ func _process(delta):
 	# TODO: add absolute max and min, and stop game once one of these is hit
 	var all_good = true
 	if(is_light_good()):
-		# change texture if it was bad before
-		# all_good = true is just so that we don't have a parser error here
-		all_good = true
+		if(light_state != HEALTH_STATE.GOOD):
+			tree.make_leaves_healthy()
+		light_state = HEALTH_STATE.GOOD
 	else:
 		handle_light(delta)
 		all_good = false
@@ -123,7 +123,7 @@ func _process(delta):
 
 func set_pot_texture(texture):
 	tree.get_node("pot").set_texture(texture)
-
+	
 func current_light_rate():
 	return weather.current_light_rate() + shade.current_light_mod() + lightbulb.current_light_mod()
 
@@ -146,11 +146,15 @@ func handle_moisture(delta):
 
 func handle_light(delta):
 	if(light < light_zone.low):
+		if light_state != HEALTH_STATE.LOW:
+			tree.make_leaves_icy()
 		light_state = HEALTH_STATE.LOW
 		var diff = light_zone.low - light
 		max_age -= diff * delta
 		print("light too low: ", light)
 	elif(light > light_zone.high):
+		if light_state != HEALTH_STATE.HIGH:
+			tree.make_leaves_brown()
 		light_state = HEALTH_STATE.HIGH
 		var diff = light - light_zone.high
 		max_age -= diff * delta

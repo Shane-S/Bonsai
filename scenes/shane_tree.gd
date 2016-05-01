@@ -21,3 +21,14 @@ func _ready():
 		else:
 			light_zone_adjust -= 1.2
 
+func make_leaves_healthy():
+	for i in range(CLUMPS):
+		get_node("LeafClump" + str(i+1)).restore()
+
+func make_leaves_icy():
+	for i in range(CLUMPS):
+		get_node("LeafClump" + str(i+1)).make_icy()
+
+func make_leaves_brown():
+	for i in range(CLUMPS):
+		get_node("LeafClump" + str(i+1)).make_brown()
