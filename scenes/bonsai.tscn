@@ -3,6 +3,7 @@
 [ext_resource path="res://scripts/bonsai.gd" type="Script" id=1]
 [ext_resource path="res://assets/textures/empty_tree.png" type="Texture" id=2]
 [ext_resource path="res://scenes/leaf_clump.tscn" type="PackedScene" id=3]
+[ext_resource path="res://assets/textures/pot_normal.png" type="Texture" id=4]
 
 [node name="root" type="Node2D"]
 
@@ -47,5 +48,12 @@ num_sprites = 6
 transform/pos = Vector2( 111.401, -52.1807 )
 transform/scale = Vector2( 1.2403, 1.09586 )
 num_sprites = 6
+
+[node name="pot" type="Sprite" parent="."]
+
+transform/pos = Vector2( 0, 179.931 )
+transform/scale = Vector2( 1.1081, 1.32053 )
+z/z = -1
+texture = ExtResource( 4 )
 
 

@@ -8,10 +8,23 @@ const AGE_RATE = 10.0
 const DRY_RATE = 1.0
 const WISDOM_RATE = 30.0
 
+const HEALTH_STATE = {GOOD = 0, LOW = 1, HIGH = 2}
+
 var moisture = 20.0
 var light = 20.0
 
+
+var moisture_state = HEALTH_STATE.GOOD
+var light_state = HEALTH_STATE.GOOD
+
+var quotes = [
+"OMG such wise",
+"Stumps are dead trees",
+"Eat yo wheaties",
+"Paper beats rock"]
+
 var wisdom = 0.0
+var quotes_gotten = 0
 var age = 0.0
 var max_age = 1000.0 # algorithm for determining max age may change; currently, if the player gets a perfect run, their tree will be 1000
 
@@ -64,11 +77,44 @@ func _process(delta):
 		get_node("/root/global").game_over(wisdom, age)
 	
 	# TODO: add absolute max and min, and stop game once one of these is hit
-	if(is_light_good() and is_moisture_good()):
-		wisdom += delta * WISDOM_RATE
+	var all_good = true
+	if(is_light_good()):
+		# change texture if it was bad before
+		# all_good = true is just so that we don't have a parser error here
+		all_good = true
+	else:
+		handle_light(delta)
+		all_good = false
+	
+	if(is_moisture_good() and not moisture_state == HEALTH_STATE.GOOD):
+		get_node("pot").set_texture(load("assets/textures/pot_normal.png"))
+		moisture_state = HEALTH_STATE.GOOD
 	else:
 		handle_moisture(delta)
-		handle_light(delta)
+		all_good = false
+		
+	if(all_good):
+		wisdom += delta * WISDOM_RATE
+	
+	if(wisdom >= 400 and quotes_gotten == 0):
+		get_node("Quote").set_text(quotes[0])
+		get_node("Quote/AnimationPlayer").play("display")
+		quotes_gotten = 1
+		
+	if(wisdom >= 600 and quotes_gotten == 1):
+		get_node("Quote").set_text(quotes[1])
+		get_node("Quote/AnimationPlayer").play("display")
+		quotes_gotten = 2
+		
+	if(wisdom >= 800 and quotes_gotten == 2):
+		get_node("Quote").set_text(quotes[2])
+		get_node("Quote/AnimationPlayer").play("display")
+		quotes_gotten = 3
+		
+	if(wisdom >= 1000 and quotes_gotten == 3):
+		get_node("Quote").set_text(quotes[3])
+		get_node("Quote/AnimationPlayer").play("display")
+		quotes_gotten = 4
 
 func current_light_rate():
 	return weather.current_light_rate() + shade.current_light_mod() + lightbulb.current_light_mod()
@@ -78,20 +124,26 @@ func current_dry_rate():
 	
 func handle_moisture(delta):
 	if(moisture < moisture_zone.low):
+		moisture_state = HEALTH_STATE.LOW
 		var diff = moisture_zone.low - moisture
 		max_age -= diff * delta
+		get_node("pot").set_texture(load("assets/textures/pot_dry.png"))
 		print("moisture too low: ", moisture)
 	elif(moisture > moisture_zone.high):
+		moisture_state = HEALTH_STATE.HIGH
 		var diff = moisture - moisture_zone.high
 		max_age -= diff * delta
+		get_node("pot").set_texture(load("assets/textures/pot_moist.png"))
 		print("moisture too high: ", moisture)
 
 func handle_light(delta):
 	if(light < light_zone.low):
+		light_state = HEALTH_STATE.LOW
 		var diff = light_zone.low - light
 		max_age -= diff * delta
 		print("light too low: ", light)
 	elif(light > light_zone.high):
+		light_state = HEALTH_STATE.HIGH
 		var diff = light - light_zone.high
 		max_age -= diff * delta
 		print("light too high: ", light)
