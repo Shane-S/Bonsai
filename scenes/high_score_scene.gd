@@ -14,10 +14,18 @@ func _ready():
 	var wisdom_scores = get_node("/root/global").load_wisdom_scores()
 	age_scores.sort_custom(self, "compare_age")
 	wisdom_scores.sort_custom(self, "compare_wisdom")
+	var i = 0
 	for score in age_scores:
+		if i >= 15:
+			break
 		show_age(score["name"] + ": " + str(int(score["age"])))
+		i = i + 1
+	i = 0
 	for score in wisdom_scores:
+		if i >= 15:
+			break
 		show_wisdom(score["name"] + ": " + str(int(score["wisdom"])))
+		i = i + 1
 
 func compare_age(a1, a2):
 	return a1["age"] > a2["age"]
