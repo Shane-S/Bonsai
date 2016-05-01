@@ -21,7 +21,10 @@ var quotes = [
 "OMG such wise",
 "Stumps are dead trees",
 "Eat yo wheaties",
-"Paper beats rock"]
+"Paper beats rock",
+"Those who try really hard usually get good sometimes",
+"Don't cheat on your math tests etc.",
+"*Tree noises*"]
 
 var wisdom = 0.0
 var quotes_gotten = 0
@@ -102,20 +105,35 @@ func _process(delta):
 		get_node("Quote/AnimationPlayer").play("Quote")
 		quotes_gotten = 1
 	
-	if(wisdom >= 600 and quotes_gotten == 1):
+	if(wisdom >= 800 and quotes_gotten == 1):
 		get_node("Quote").set_text(quotes[1])
 		get_node("Quote/AnimationPlayer").play("Quote")
 		quotes_gotten = 2
 	
-	if(wisdom >= 800 and quotes_gotten == 2):
+	if(wisdom >= 1200 and quotes_gotten == 2):
 		get_node("Quote").set_text(quotes[2])
 		get_node("Quote/AnimationPlayer").play("Quote")
 		quotes_gotten = 3
 	
-	if(wisdom >= 1000 and quotes_gotten == 3):
+	if(wisdom >= 1600 and quotes_gotten == 3):
 		get_node("Quote").set_text(quotes[3])
 		get_node("Quote/AnimationPlayer").play("Quote")
 		quotes_gotten = 4
+	
+	if(wisdom >= 2000 and quotes_gotten == 4):
+		get_node("Quote").set_text(quotes[4])
+		get_node("Quote/AnimationPlayer").play("Quote")
+		quotes_gotten = 5
+	
+	if(wisdom >= 2400 and quotes_gotten == 5):
+		get_node("Quote").set_text(quotes[5])
+		get_node("Quote/AnimationPlayer").play("Quote")
+		quotes_gotten = 6
+	
+	if(wisdom >= 2800 and quotes_gotten == 6):
+		get_node("Quote").set_text(quotes[6])
+		get_node("Quote/AnimationPlayer").play("Quote")
+		quotes_gotten = 7
 
 func current_light_rate():
 	return weather.current_light_rate() + shade.current_light_mod() + lightbulb.current_light_mod()

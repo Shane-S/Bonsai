@@ -9,13 +9,13 @@
 [sub_resource type="Animation" id=1]
 
 resource/name = "Quote"
-length = 4.0
+length = 6.0
 loop = false
 step = 0.1
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:visibility/visible")
 tracks/0/interp = 1
-tracks/0/keys = { "cont":false, "times":FloatArray( 0, 4 ), "transitions":FloatArray( 1, 1 ), "values":[ true, false ] }
+tracks/0/keys = { "cont":false, "times":FloatArray( 0, 6 ), "transitions":FloatArray( 1, 1 ), "values":[ true, false ] }
 
 [node name="root" type="Node2D"]
 
@@ -70,14 +70,16 @@ texture = ExtResource( 4 )
 
 [node name="Quote" type="Label" parent="."]
 
-margin/left = -336.0
-margin/top = 244.0
-margin/right = -296.0
-margin/bottom = 289.0
+margin/left = -250.0
+margin/top = 250.0
+margin/right = 250.0
+margin/bottom = 520.0
 focus/ignore_mouse = true
 focus/stop_mouse = true
 size_flags/horizontal = 2
 custom_fonts/font = ExtResource( 5 )
+align = 1
+autowrap = true
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
