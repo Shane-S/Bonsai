@@ -40,7 +40,7 @@ onready var watering_can = get_node("watering_can")
 onready var lightbulb = get_node("light")
 onready var weather = get_node("../Weather")
 
-const TREES = ["res://scenes/shane_tree.tscn", "res://scenes/clark_tree.tscn"]
+const TREES = ["res://scenes/tree1.tscn", "res://scenes/tree2.tscn", "res://scenes/tree3.tscn"]
 var tree = null
 
 func _ready():
