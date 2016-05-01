@@ -1,9 +1,21 @@
-[gd_scene load_steps=4 format=1]
+[gd_scene load_steps=7 format=1]
 
 [ext_resource path="res://scripts/bonsai.gd" type="Script" id=1]
 [ext_resource path="res://assets/textures/empty_tree.png" type="Texture" id=2]
 [ext_resource path="res://scenes/leaf_clump.tscn" type="PackedScene" id=3]
 [ext_resource path="res://assets/textures/pot_normal.png" type="Texture" id=4]
+[ext_resource path="res://assets/fonts/menu_font.fnt" type="Font" id=5]
+
+[sub_resource type="Animation" id=1]
+
+resource/name = "Quote"
+length = 4.0
+loop = false
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:visibility/visible")
+tracks/0/interp = 1
+tracks/0/keys = { "cont":false, "times":FloatArray( 0, 4 ), "transitions":FloatArray( 1, 1 ), "values":[ true, false ] }
 
 [node name="root" type="Node2D"]
 
@@ -55,5 +67,30 @@ transform/pos = Vector2( 0, 179.931 )
 transform/scale = Vector2( 1.1081, 1.32053 )
 z/z = -1
 texture = ExtResource( 4 )
+
+[node name="Quote" type="Label" parent="."]
+
+margin/left = -336.0
+margin/top = 244.0
+margin/right = -296.0
+margin/bottom = 289.0
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+custom_fonts/font = ExtResource( 5 )
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Quote"]
+
+playback/process_mode = 1
+playback/default_blend_time = 0.0
+root/root = NodePath("..")
+anims/Quote = SubResource( 1 )
+playback/active = true
+playback/speed = 1.0
+blend_times = [  ]
+autoplay = ""
 
 

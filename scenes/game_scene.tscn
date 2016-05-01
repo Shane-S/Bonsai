@@ -6,7 +6,6 @@
 [ext_resource path="res://scenes/shade.tscn" type="PackedScene" id=4]
 [ext_resource path="res://scenes/watering_can.tscn" type="PackedScene" id=5]
 
-
 [node name="Node2D" type="Node2D"]
 
 transform/pos = Vector2( 300.46, 512.443 )

@@ -98,22 +98,22 @@ func _process(delta):
 	
 	if(wisdom >= 400 and quotes_gotten == 0):
 		get_node("Quote").set_text(quotes[0])
-		get_node("Quote/AnimationPlayer").play("display")
+		get_node("Quote/AnimationPlayer").play("Quote")
 		quotes_gotten = 1
 	
 	if(wisdom >= 600 and quotes_gotten == 1):
 		get_node("Quote").set_text(quotes[1])
-		get_node("Quote/AnimationPlayer").play("display")
+		get_node("Quote/AnimationPlayer").play("Quote")
 		quotes_gotten = 2
 	
 	if(wisdom >= 800 and quotes_gotten == 2):
 		get_node("Quote").set_text(quotes[2])
-		get_node("Quote/AnimationPlayer").play("display")
+		get_node("Quote/AnimationPlayer").play("Quote")
 		quotes_gotten = 3
 	
 	if(wisdom >= 1000 and quotes_gotten == 3):
 		get_node("Quote").set_text(quotes[3])
-		get_node("Quote/AnimationPlayer").play("display")
+		get_node("Quote/AnimationPlayer").play("Quote")
 		quotes_gotten = 4
 
 func current_light_rate():
