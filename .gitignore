@@ -1,3 +1,6 @@
+# FUSE stuff
+*.fuse*
+
 # Godot auto generated files
 platform/server/logo.h
 platform/android/logo.h
