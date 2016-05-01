@@ -1,27 +1,18 @@
-[gd_scene load_steps=5 format=1]
+[gd_scene load_steps=4 format=1]
 
 [ext_resource path="res://scripts/water_can.gd" type="Script" id=1]
 [ext_resource path="res://assets/textures/watering_can.png" type="Texture" id=2]
-[ext_resource path="res://assets/textures/rain.png" type="Texture" id=3]
 
-[sub_resource type="Animation" id=1]
+[sub_resource type="Animation" id=2]
 
-resource/name = "fall"
-length = 1.6
+resource/name = "water"
+length = 2.0
 loop = false
 step = 0.1
 tracks/0/type = "value"
-tracks/0/path = NodePath(".:region_rect")
+tracks/0/path = NodePath(".:config/emitting")
 tracks/0/interp = 1
-tracks/0/keys = { "cont":true, "times":FloatArray( 0, 0.5, 1.5 ), "transitions":FloatArray( 1, 1, 1 ), "values":[ Rect2( 0, 400, 200, 600 ), Rect2( 0, 200, 200, 600 ), Rect2( 0, 200, 200, 0 ) ] }
-tracks/1/type = "value"
-tracks/1/path = NodePath(".:transform/pos")
-tracks/1/interp = 1
-tracks/1/keys = { "cont":true, "times":FloatArray( 0, 0.5, 1.5 ), "transitions":FloatArray( 1, 1, 1 ), "values":[ Vector2( -175, 125 ), Vector2( -175, 125 ), Vector2( -175, 275 ) ] }
-tracks/2/type = "value"
-tracks/2/path = NodePath(".:visibility/visible")
-tracks/2/interp = 1
-tracks/2/keys = { "cont":false, "times":FloatArray( 0, 1.6 ), "transitions":FloatArray( 1, 1 ), "values":[ true, false ] }
+tracks/0/keys = { "cont":true, "times":FloatArray( 0, 1 ), "transitions":FloatArray( 1, 1 ), "values":[ true, false ] }
 
 [node name="Watering Can" type="Node2D"]
 
@@ -45,21 +36,40 @@ size_flags/vertical = 2
 transform/scale = Vector2( 0.15, 0.15 )
 texture = ExtResource( 2 )
 
-[node name="water" type="Sprite" parent="."]
+[node name="Water" type="Particles2D" parent="."]
 
-visibility/visible = false
-transform/pos = Vector2( -175, 275 )
-transform/scale = Vector2( 0.5, 0.5 )
-texture = ExtResource( 3 )
-region = true
-region_rect = Rect2( 0, 200, 200, 0 )
+transform/pos = Vector2( -120, 100 )
+config/amount = 100
+config/lifetime = 1.5
+config/emitting = false
+config/half_extents = Vector2( 20, 20 )
+params/direction = 335.0
+params/spread = 15.0
+params/linear_velocity = 100.0
+params/spin_velocity = 5.0
+params/orbit_velocity = 0.0
+params/gravity_direction = 0.0
+params/gravity_strength = 9.8
+params/radial_accel = 0.0
+params/tangential_accel = 0.0
+params/damping = 0.0
+params/initial_angle = 0.0
+params/initial_size = 4.0
+params/final_size = 4.0
+params/hue_variation = 0.0
+params/anim_speed_scale = 1.0
+params/anim_initial_pos = 0.0
+randomness/direction = 1.0
+randomness/linear_velocity = 0.2
+randomness/spin_velocity = 1.0
+color/color = Color( 0.193115, 0.193115, 0.882813, 1 )
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="water"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Water"]
 
 playback/process_mode = 1
 playback/default_blend_time = 0.0
 root/root = NodePath("..")
-anims/fall = SubResource( 1 )
+anims/water = SubResource( 2 )
 playback/active = true
 playback/speed = 1.0
 blend_times = [  ]
