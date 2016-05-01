@@ -22,10 +22,10 @@ water_amount = 3
 [node name="Panel" type="Panel" parent="."]
 
 visibility/opacity = 0.0
-margin/left = -45.0
-margin/top = -42.0
-margin/right = 52.0
-margin/bottom = 44.0
+margin/left = -78.0
+margin/top = -81.0
+margin/right = 98.0
+margin/bottom = 75.0
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
