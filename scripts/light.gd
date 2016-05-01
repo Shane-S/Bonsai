@@ -29,12 +29,14 @@ func current_light_mod():
 func turn_on():
 	enabled = true
 	sprite.set_modulate(ENABLED_MODULATE_COLOR)
+	get_node("Light2D").show()
 	emit_signal("light_turned_on")
 	emit_signal("light_changed")
 	
 func turn_off():
 	enabled = false
 	sprite.set_modulate(DISABLED_MODULATE_COLOR)
+	get_node("Light2D").hide()
 	emit_signal("light_turned_off")
 	emit_signal("light_changed")
 
