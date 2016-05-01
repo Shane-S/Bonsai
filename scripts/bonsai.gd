@@ -15,8 +15,6 @@ var wisdom = 0.0
 var age = 0.0
 var max_age = 1000.0 # algorithm for determining max age may change; currently, if the player gets a perfect run, their tree will be 1000
 
-var branch_colours = []
-
 # The zones in which the tree will gain wisdom and not age
 var moisture_zone
 var light_zone
@@ -36,11 +34,10 @@ func _ready():
 	
 	# create the random branch colours
 	# HACKS INBOUND
-	var colours = ["green", "orange", "blue", "yellow"]
+	var colours = ["green", "red", "blue", "pink"]
 	for i in range(6):
-		var rnd = randi()
-		var colour = rnd % 4
-		branch_colours.push_back(colours[colour])
+		var colour = randi() % 4
+		get_node("LeafClump" + str(i+1)).initialize(colours[colour])
 	
 		# change the moisture and light values according to the colours
 		if(colour == 0):
@@ -55,10 +52,6 @@ func _ready():
 		else:
 			light_zone["low"] -= 1.2
 			light_zone["high"] -= 1.2
-	
-		# assign the appropriate branch type based on the colour selection
-		get_node("trunk/branch" + str(i)).set_texture(load("assets//textures//branch" + str(i) + "_" + colours[colour] + ".png"))
-	
 	set_process(true)
 	pass
 

@@ -5,7 +5,7 @@
 [node name="LeafClump" type="Node2D"]
 
 script/script = ExtResource( 1 )
-ellipse_dims = null
+ellipse_dims = Vector2( 80, 80 )
 num_sprites = null
 
 

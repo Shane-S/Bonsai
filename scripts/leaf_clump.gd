@@ -27,6 +27,7 @@ func initialize(color):
 		var sprite = Sprite.new()
 		sprite.set_texture(textures[tex_idx])
 		sprite.translate(random_point_in_ellipse())
+		sprite.set_z(randi() % 3)
 		add_child(sprite)
 
 func random_point_in_ellipse():
