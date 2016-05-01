@@ -28,10 +28,12 @@ transform/scale = Vector2( -1, 1 )
 
 transform/pos = Vector2( 142.839, -216.299 )
 transform/scale = Vector2( 1, 1 )
+open_sun_mod = -3
+closed_sun_mod = 0
 
 [node name="light" parent="bansai" instance=ExtResource( 5 )]
 
 transform/pos = Vector2( -2.45551, -209.943 )
-disabled_light_mod = 0.0
 
 
+[editable path="Weather"]

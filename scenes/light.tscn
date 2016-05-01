@@ -7,6 +7,7 @@
 
 script/script = ExtResource( 1 )
 enabled = false
+disabled_light_mod = 0.0
 enabled_light_mod = 3.0
 
 [node name="Sprite" type="Sprite" parent="."]

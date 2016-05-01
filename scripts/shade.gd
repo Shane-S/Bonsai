@@ -6,9 +6,8 @@ signal shade_closed
 signal shade_changed
 
 export(bool) var is_open = false
-export(int) var open_sun_mod = 0
-export(int) var closed_sun_mod = -3
-var sun_mod = closed_sun_mod
+export(int) var open_sun_mod = -3
+export(int) var closed_sun_mod = 0
 onready var open_sprite = get_node("OpenSprite")
 onready var closed_sprite = get_node("ClosedSprite")
 
@@ -26,7 +25,6 @@ func current_light_mod():
 
 func open():
 	is_open = true
-	sun_mod = open_sun_mod
 	open_sprite.show()
 	closed_sprite.hide()
 	emit_signal("shade_opened")
@@ -34,7 +32,6 @@ func open():
 	
 func close():
 	is_open = false
-	sun_mod = closed_sun_mod
 	open_sprite.hide()
 	closed_sprite.show()
 	emit_signal("shade_closed")
