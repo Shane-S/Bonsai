@@ -26,8 +26,8 @@ transform/scale = Vector2( -1, 1 )
 
 [node name="shade" parent="bansai" instance=ExtResource( 4 )]
 
-transform/pos = Vector2( 142.839, -216.299 )
-transform/scale = Vector2( 1, 1 )
+transform/pos = Vector2( 134.17, -223.263 )
+transform/scale = Vector2( 0.729098, 0.782379 )
 open_sun_mod = -3
 closed_sun_mod = 0
 
