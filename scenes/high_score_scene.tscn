@@ -1,0 +1,94 @@
+[gd_scene load_steps=3 format=1]
+
+[ext_resource path="res://scenes/high_score_scene.gd" type="Script" id=1]
+[ext_resource path="res://assets/fonts/menu_font.fnt" type="Font" id=2]
+
+[node name="HighScores" type="Panel"]
+
+anchor/right = 1
+anchor/bottom = 1
+margin/right = -1.0
+margin/bottom = -4.0
+focus/ignore_mouse = false
+focus/stop_mouse = false
+size_flags/horizontal = 3
+size_flags/vertical = 3
+script/script = ExtResource( 1 )
+font = ExtResource( 2 )
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+
+margin/right = 603.0
+margin/bottom = 1004.0
+focus/ignore_mouse = false
+focus/stop_mouse = false
+size_flags/horizontal = 3
+size_flags/vertical = 3
+alignment = 0
+__meta__ = { "_editor_collapsed":true }
+
+[node name="AgeList" type="VBoxContainer" parent="HBoxContainer"]
+
+margin/right = 299.0
+margin/bottom = 1004.0
+focus/ignore_mouse = false
+focus/stop_mouse = false
+size_flags/horizontal = 3
+size_flags/vertical = 2
+alignment = 0
+
+[node name="Title" type="Label" parent="HBoxContainer/AgeList"]
+
+margin/right = 299.0
+margin/bottom = 45.0
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 3
+custom_fonts/font = ExtResource( 2 )
+text = "Top Ages"
+align = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="WisdomList" type="VBoxContainer" parent="HBoxContainer"]
+
+margin/left = 303.0
+margin/right = 603.0
+margin/bottom = 1004.0
+focus/ignore_mouse = false
+focus/stop_mouse = false
+size_flags/horizontal = 3
+size_flags/vertical = 2
+alignment = 0
+
+[node name="Title" type="Label" parent="HBoxContainer/WisdomList"]
+
+margin/right = 300.0
+margin/bottom = 45.0
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 3
+custom_fonts/font = ExtResource( 2 )
+text = "Top Wisdoms"
+align = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="Done" type="Button" parent="."]
+
+margin/left = 103.0
+margin/top = 940.0
+margin/right = 471.0
+margin/bottom = 991.0
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+custom_fonts/font = ExtResource( 2 )
+toggle_mode = false
+text = "Back To Main Menu"
+flat = false
+
+
