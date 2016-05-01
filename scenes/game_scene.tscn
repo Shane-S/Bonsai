@@ -1,10 +1,10 @@
 [gd_scene load_steps=6 format=1]
 
 [ext_resource path="res://scenes/weather.tscn" type="PackedScene" id=1]
-[ext_resource path="res://assets/instances/bonsai.scn" type="PackedScene" id=2]
-[ext_resource path="res://scenes/watering_can.tscn" type="PackedScene" id=3]
+[ext_resource path="res://assets/instances/bonsai.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/light.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/shade.tscn" type="PackedScene" id=4]
-[ext_resource path="res://scenes/light.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/watering_can.tscn" type="PackedScene" id=5]
 
 [node name="Node2D" type="Node2D"]
 
@@ -17,23 +17,21 @@ transform/pos = Vector2( -300.149, -514.358 )
 
 [node name="bansai" parent="." instance=ExtResource( 2 )]
 
-transform/pos = Vector2( -10.5514, -13.566 )
+[node name="light" parent="bansai" instance=ExtResource( 3 )]
 
-[node name="watering_can" parent="bansai" instance=ExtResource( 3 )]
-
-transform/pos = Vector2( -170.211, -96.8249 )
-transform/scale = Vector2( -1, 1 )
+transform/pos = Vector2( -13.0069, -223.509 )
 
 [node name="shade" parent="bansai" instance=ExtResource( 4 )]
 
-transform/pos = Vector2( 134.17, -223.263 )
+transform/pos = Vector2( 123.619, -236.829 )
 transform/scale = Vector2( 0.729098, 0.782379 )
 open_sun_mod = -3
 closed_sun_mod = 0
 
-[node name="light" parent="bansai" instance=ExtResource( 5 )]
+[node name="watering_can" parent="bansai" instance=ExtResource( 5 )]
 
-transform/pos = Vector2( -2.45551, -209.943 )
+transform/pos = Vector2( -180.762, -110.391 )
+transform/scale = Vector2( -1, 1 )
 
 
 [editable path="Weather"]
