@@ -74,7 +74,6 @@ func _process(delta):
 	if(health <= 0):
 		get_node("/root/global").game_over(wisdom, age)
 	
-	# TODO: add absolute max and min, and stop game once one of these is hit
 	var all_good = true
 	if(is_light_good()):
 		if(light_state != HEALTH_STATE.GOOD):
