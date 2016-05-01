@@ -11,13 +11,14 @@ dry_rate = 1.0
 
 [node name="Sky" type="Sprite" parent="."]
 
-z/z = -2
+z/z = -3
 texture = ExtResource( 2 )
 centered = false
 
 [node name="Foreground Snow" type="Particles2D" parent="."]
 
 transform/pos = Vector2( 300, 0 )
+z/z = -2
 config/amount = 700
 config/lifetime = 12.0
 config/half_extents = Vector2( 400, 0 )
@@ -44,6 +45,7 @@ color/color = Color( 0.933594, 0.933594, 0.933594, 1 )
 [node name="Background Snow" type="Particles2D" parent="."]
 
 transform/pos = Vector2( 450, 0 )
+z/z = -2
 config/amount = 700
 config/lifetime = 12.0
 config/half_extents = Vector2( 500, 0 )
